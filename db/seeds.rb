@@ -6,4 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-IngredientCategory.create [{name: 'London Dry Gin'}, {name: 'Liqueur'}, {name: 'Cachaça'}, {name: 'Tequila'}, {name: 'White Rum'}, {name: 'Dark Rum'}]
+IngredientCategory.create([
+                            { name: 'London Dry Gin' },
+                            { name: 'Liqueur' },
+                            { name: 'Cachaça' },
+                            { name: 'Tequila' },
+                            { name: 'White Rum' },
+                            { name: 'Dark Rum' }
+                          ])
