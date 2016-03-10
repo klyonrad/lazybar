@@ -48,6 +48,9 @@ group :development do
   gem 'spring'
 end
 
+# For Deployment to heroku
+gem 'rails_12factor', group: :production
+
 # quick fix / workround for NoMethodError on last_comment http://stackoverflow.com/a/35893625/1796645
 gem 'rake', '< 11.0'
 
