@@ -1,4 +1,17 @@
 inherit_from: .rubocop_todo.yml
 
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'bin/**/*'
+    - 'tmp/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'spec/**/*'
+    - 'test/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+
 Metrics/LineLength:
   Max: 120
