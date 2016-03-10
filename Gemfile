@@ -48,4 +48,7 @@ group :development do
   gem 'spring'
 end
 
+# quick fix / workround for NoMethodError on last_comment http://stackoverflow.com/a/35893625/1796645
+gem 'rake', '< 11.0'
+
 ruby '2.3.0'
