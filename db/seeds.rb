@@ -14,3 +14,11 @@ IngredientCategory.create([
                             { name: 'White Rum' },
                             { name: 'Dark Rum' }
                           ])
+
+Ingredient.create([
+                    { name: 'Bombay Sapphire', price_per_cl: 0.22, ingredient_category_id: 1, comment: 'blaue Flasche' },
+                    { name: 'Beefeater', price_per_cl: 0.256, ingredient_category_id: 1, comment: nil },
+                    { name: 'Chartreuse Verte', price_per_cl: 0.39, ingredient_category_id: 2, comment: 'Der knallt. Und ist lecker.' },
+                    { name: "Gosling's Black Seal", price_per_cl: 0.29, ingredient_category_id: 6, comment: nil },
+                    { name: 'Don Julio Reposado', price_per_cl: 0.58, ingredient_category_id: 4, comment: nil }
+                  ])
