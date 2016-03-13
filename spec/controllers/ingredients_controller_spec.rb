@@ -24,11 +24,18 @@ RSpec.describe IngredientsController, type: :controller do
   # Ingredient. As you add validations to Ingredient, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    category_id = IngredientCategory.create!(name: 'Category').id # to make a corresponding Foreign Key
+    { name: 'Name', price_per_cl: 0.214, ingredient_category_id: category_id }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: nil, price_per_cl: 2, ingredient_category_id: nil }
+  }
+
+  # Test uniquness validation
+  let(:duplicate_name_attributes) {
+    ingredient = Ingredient.create! valid_attributes
+    { name: ingredient.name, price_per_cl: 0.135, ingredient_category_id: ingredient.ingredient_category_id }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -36,122 +43,122 @@ RSpec.describe IngredientsController, type: :controller do
   # IngredientsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all ingredients as @ingredients" do
+  describe 'GET #index' do
+    it 'assigns all ingredients as @ingredients' do
       ingredient = Ingredient.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:ingredients)).to eq([ingredient])
     end
   end
 
-  describe "GET #show" do
-    it "assigns the requested ingredient as @ingredient" do
+  describe 'GET #show' do
+    it 'assigns the requested ingredient as @ingredient' do
       ingredient = Ingredient.create! valid_attributes
-      get :show, {:id => ingredient.to_param}, valid_session
+      get :show, { :id => ingredient.to_param }, valid_session
       expect(assigns(:ingredient)).to eq(ingredient)
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new ingredient as @ingredient" do
+  describe 'GET #new' do
+    it 'assigns a new ingredient as @ingredient' do
       get :new, {}, valid_session
       expect(assigns(:ingredient)).to be_a_new(Ingredient)
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested ingredient as @ingredient" do
+  describe 'GET #edit' do
+    it 'assigns the requested ingredient as @ingredient' do
       ingredient = Ingredient.create! valid_attributes
-      get :edit, {:id => ingredient.to_param}, valid_session
+      get :edit, { :id => ingredient.to_param }, valid_session
       expect(assigns(:ingredient)).to eq(ingredient)
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Ingredient" do
+  describe 'POST #create' do
+    context 'with valid params' do
+      it 'creates a new Ingredient' do
         expect {
-          post :create, {:ingredient => valid_attributes}, valid_session
+          post :create, { :ingredient => valid_attributes }, valid_session
         }.to change(Ingredient, :count).by(1)
       end
 
-      it "assigns a newly created ingredient as @ingredient" do
-        post :create, {:ingredient => valid_attributes}, valid_session
+      it 'assigns a newly created ingredient as @ingredient' do
+        post :create, { :ingredient => valid_attributes }, valid_session
         expect(assigns(:ingredient)).to be_a(Ingredient)
         expect(assigns(:ingredient)).to be_persisted
       end
 
-      it "redirects to the created ingredient" do
-        post :create, {:ingredient => valid_attributes}, valid_session
+      it 'redirects to the created ingredient' do
+        post :create, { :ingredient => valid_attributes }, valid_session
         expect(response).to redirect_to(Ingredient.last)
       end
     end
 
-    context "with invalid params" do
-      it "assigns a newly created but unsaved ingredient as @ingredient" do
-        post :create, {:ingredient => invalid_attributes}, valid_session
+    context 'with invalid params' do
+      it 'assigns a newly created but unsaved ingredient as @ingredient' do
+        post :create, { :ingredient => invalid_attributes }, valid_session
         expect(assigns(:ingredient)).to be_a_new(Ingredient)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:ingredient => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
+        post :create, { :ingredient => invalid_attributes }, valid_session
+        expect(response).to render_template('new')
       end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
+  describe 'PUT #update' do
+    context 'with valid params' do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        skip('Add a hash of attributes valid for your model')
       }
 
-      it "updates the requested ingredient" do
+      it 'updates the requested ingredient' do
         ingredient = Ingredient.create! valid_attributes
-        put :update, {:id => ingredient.to_param, :ingredient => new_attributes}, valid_session
+        put :update, { :id => ingredient.to_param, :ingredient => new_attributes }, valid_session
         ingredient.reload
-        skip("Add assertions for updated state")
+        skip('Add assertions for updated state')
       end
 
-      it "assigns the requested ingredient as @ingredient" do
+      it 'assigns the requested ingredient as @ingredient' do
         ingredient = Ingredient.create! valid_attributes
-        put :update, {:id => ingredient.to_param, :ingredient => valid_attributes}, valid_session
+        put :update, { :id => ingredient.to_param, :ingredient => valid_attributes }, valid_session
         expect(assigns(:ingredient)).to eq(ingredient)
       end
 
-      it "redirects to the ingredient" do
+      it 'redirects to the ingredient' do
         ingredient = Ingredient.create! valid_attributes
-        put :update, {:id => ingredient.to_param, :ingredient => valid_attributes}, valid_session
+        put :update, { :id => ingredient.to_param, :ingredient => valid_attributes }, valid_session
         expect(response).to redirect_to(ingredient)
       end
     end
 
-    context "with invalid params" do
-      it "assigns the ingredient as @ingredient" do
+    context 'with invalid params' do
+      it 'assigns the ingredient as @ingredient' do
         ingredient = Ingredient.create! valid_attributes
-        put :update, {:id => ingredient.to_param, :ingredient => invalid_attributes}, valid_session
+        put :update, { :id => ingredient.to_param, :ingredient => invalid_attributes }, valid_session
         expect(assigns(:ingredient)).to eq(ingredient)
       end
 
       it "re-renders the 'edit' template" do
         ingredient = Ingredient.create! valid_attributes
-        put :update, {:id => ingredient.to_param, :ingredient => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
+        put :update, { :id => ingredient.to_param, :ingredient => invalid_attributes }, valid_session
+        expect(response).to render_template('edit')
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested ingredient" do
+  describe 'DELETE #destroy' do
+    it 'destroys the requested ingredient' do
       ingredient = Ingredient.create! valid_attributes
       expect {
-        delete :destroy, {:id => ingredient.to_param}, valid_session
+        delete :destroy, { :id => ingredient.to_param }, valid_session
       }.to change(Ingredient, :count).by(-1)
     end
 
-    it "redirects to the ingredients list" do
+    it 'redirects to the ingredients list' do
       ingredient = Ingredient.create! valid_attributes
-      delete :destroy, {:id => ingredient.to_param}, valid_session
+      delete :destroy, { :id => ingredient.to_param }, valid_session
       expect(response).to redirect_to(ingredients_url)
     end
   end
