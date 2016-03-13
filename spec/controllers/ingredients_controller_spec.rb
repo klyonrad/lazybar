@@ -105,6 +105,13 @@ RSpec.describe IngredientsController, type: :controller do
         expect(response).to render_template('new')
       end
     end
+
+    context 'with non-unique name' do
+      it "re-renders the 'new' template" do
+        post :create, { :ingredient => duplicate_name_attributes }, valid_session
+        expect(response).to render_template('new')
+      end
+    end
   end
 
   describe 'PUT #update' do
@@ -143,6 +150,26 @@ RSpec.describe IngredientsController, type: :controller do
       it "re-renders the 'edit' template" do
         ingredient = Ingredient.create! valid_attributes
         put :update, { :id => ingredient.to_param, :ingredient => invalid_attributes }, valid_session
+        expect(response).to render_template('edit')
+      end
+    end
+
+    context 'with non-unique name' do
+      it "re-renders the 'edit' template" do
+        first_ingredient  = Ingredient.create! valid_attributes
+        second_ingredient = Ingredient.create!(
+          name:                   'Other Name',
+          price_per_cl:           first_ingredient.price_per_cl,
+          ingredient_category_id: first_ingredient.ingredient_category_id
+        )
+        put :update, {
+          id:         second_ingredient.to_param, # try to edit the first element with the name of the second element
+          ingredient: { # maybe put this in a seperate method
+                        name:                   first_ingredient.name,
+                        price_per_cl:           0.123,
+                        ingredient_category_id: first_ingredient.ingredient_category_id
+          }
+        }, valid_session
         expect(response).to render_template('edit')
       end
     end
