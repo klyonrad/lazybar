@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "ingredients/edit", type: :view do
   before(:each) do
+    @category = assign(:ingredient_category, IngredientCategory.create!(name: 'Category'))
     @ingredient = assign(:ingredient, Ingredient.create!(
-      :ingredient_category => nil,
+      :ingredient_category => @category,
       :name => "MyString",
-      :price_per_cl => "",
-      :price_per_cl => "",
+      :price_per_cl => "0.22",
       :available => false,
       :comment => "MyString"
     ))
