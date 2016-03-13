@@ -1,0 +1,33 @@
+<%= form_for(@cocktail_recipe) do |f| %>
+  <% if @cocktail_recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cocktail_recipe.errors.count, "error") %> prohibited this cocktail_recipe from being saved:</h2>
+
+      <ul>
+      <% @cocktail_recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :cost %><br>
+    <%= f.text_field :cost %>
+  </div>
+  <div class="field">
+    <%= f.label :selling_price %><br>
+    <%= f.text_field :selling_price %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

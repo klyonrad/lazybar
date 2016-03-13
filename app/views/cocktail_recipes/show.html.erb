@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cocktail_recipe.name %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @cocktail_recipe.cost %>
+</p>
+
+<p>
+  <strong>Selling price:</strong>
+  <%= @cocktail_recipe.selling_price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @cocktail_recipe.description %>
+</p>
+
+<%= link_to 'Edit', edit_cocktail_recipe_path(@cocktail_recipe) %> |
+<%= link_to 'Back', cocktail_recipes_path %>
