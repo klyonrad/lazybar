@@ -15,6 +15,18 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+    Ingredients:
+    <ul>
+    <%= f.fields_for :cocktail_recipe_parts do |recipe_parts_form| %>
+        <li>
+          <%= recipe_parts_form.label :ingredient_category_id %>
+          <%= recipe_parts_form.text_field :ingredient_category_id %>
+
+          <%= recipe_parts_form.label :amount %>
+          <%= recipe_parts_form.number_field :amount %>
+        </li>
+    <% end %>
+    </ul>
   <div class="field">
     <%= f.label :cost %><br>
     <%= f.text_field :cost %>
