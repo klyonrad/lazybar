@@ -5,6 +5,17 @@
   <%= @cocktail_recipe.name %>
 </p>
 
+<% if @cocktail_recipe.cocktail_recipe_parts %>
+    <p>
+      <strong>Ingredients:</strong>
+      <% @cocktail_recipe.cocktail_recipe_parts.each do |recipe_part| %>
+        <ul>
+          <%= recipe_part.amount %> cl of <%= recipe_part.ingredient_category.name %>
+        </ul>
+    <% end %>
+    </p>
+<% end %>
+
 <p>
   <strong>Cost:</strong>
   <%= @cocktail_recipe.cost %>

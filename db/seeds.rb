@@ -12,7 +12,8 @@ IngredientCategory.create([
                             { name: 'Cachaça' },
                             { name: 'Tequila' },
                             { name: 'White Rum' },
-                            { name: 'Dark Rum' }
+                            { name: 'Dark Rum' },
+                            { name: 'Tonic Water' }
                           ])
 
 Ingredient.create([
@@ -20,5 +21,20 @@ Ingredient.create([
                     { name: 'Beefeater', price_per_cl: 0.256, ingredient_category_id: 1, comment: nil },
                     { name: 'Chartreuse Verte', price_per_cl: 0.39, ingredient_category_id: 2, comment: 'Der knallt. Und ist lecker.' },
                     { name: "Gosling's Black Seal", price_per_cl: 0.29, ingredient_category_id: 6, comment: nil },
-                    { name: 'Don Julio Reposado', price_per_cl: 0.58, ingredient_category_id: 4, comment: nil }
+                    { name: 'Don Julio Reposado', price_per_cl: 0.58, ingredient_category_id: 4, comment: nil },
+                    { name: 'FeverTree Mediterranean', price_per_cl: 0.075, ingredient_category_id: 7, comment: nil }
                   ])
+
+CocktailRecipe.create([{ name: 'Mischmasch' }])
+
+CocktailRecipePart.create([
+                            { cocktail_recipe_id:     1,
+                              ingredient_category_id: 3,
+                              amount:                 2.5 },
+                            { cocktail_recipe_id:     1,
+                              ingredient_category_id: 2,
+                              amount:                 2.5 },
+                            { cocktail_recipe_id:     1,
+                              ingredient_category_id: 1,
+                              amount:                 2.5 }
+                          ])

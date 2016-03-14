@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313204649) do
+ActiveRecord::Schema.define(version: 20160314221757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cocktail_recipe_parts", force: :cascade do |t|
+    t.integer  "cocktail_recipe_id",                              null: false
+    t.integer  "ingredient_category_id",                          null: false
+    t.integer  "ingredient_id"
+    t.decimal  "amount",                 precision: 15, scale: 9
+    t.boolean  "strict"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  add_index "cocktail_recipe_parts", ["cocktail_recipe_id"], name: "index_cocktail_recipe_parts_on_cocktail_recipe_id", using: :btree
+  add_index "cocktail_recipe_parts", ["ingredient_category_id"], name: "index_cocktail_recipe_parts_on_ingredient_category_id", using: :btree
+  add_index "cocktail_recipe_parts", ["ingredient_id"], name: "index_cocktail_recipe_parts_on_ingredient_id", using: :btree
 
   create_table "cocktail_recipes", force: :cascade do |t|
     t.string   "name"
@@ -46,5 +60,8 @@ ActiveRecord::Schema.define(version: 20160313204649) do
   add_index "ingredients", ["ingredient_category_id"], name: "index_ingredients_on_ingredient_category_id", using: :btree
   add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true, using: :btree
 
+  add_foreign_key "cocktail_recipe_parts", "cocktail_recipes"
+  add_foreign_key "cocktail_recipe_parts", "ingredient_categories"
+  add_foreign_key "cocktail_recipe_parts", "ingredients"
   add_foreign_key "ingredients", "ingredient_categories"
 end
