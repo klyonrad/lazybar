@@ -1,4 +1,4 @@
-<%= form_for(@cocktail_recipe) do |f| %>
+<%= simple_form_for(@cocktail_recipe) do |f| %>
   <% if @cocktail_recipe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@cocktail_recipe.errors.count, "error") %> prohibited this cocktail_recipe from being saved:</h2>
@@ -16,7 +16,7 @@
     <%= f.text_field :name %>
   </div>
     <h3>Ingredients:</h3>
-    <%= f.fields_for :cocktail_recipe_parts do |recipe_parts_form| %>
+    <%= f.simple_fields_for :cocktail_recipe_parts do |recipe_parts_form| %>
       <%= render 'recipe_part_fields', f: recipe_parts_form %>
     <% end %>
     <div class="links">
