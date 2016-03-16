@@ -15,18 +15,13 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-    Ingredients:
-    <ul>
+    <h3>Ingredients:</h3>
     <%= f.fields_for :cocktail_recipe_parts do |recipe_parts_form| %>
-        <li>
-          <%= recipe_parts_form.label :ingredient_category_id %>
-          <%= recipe_parts_form.text_field :ingredient_category_id %>
-
-          <%= recipe_parts_form.label :amount %>
-          <%= recipe_parts_form.number_field :amount %>
-        </li>
+      <%= render 'recipe_part_fields', f: recipe_parts_form %>
     <% end %>
-    </ul>
+    <div class="links">
+      <%= link_to_add_association 'add ingredient', f, :cocktail_recipe_parts, partial: 'recipe_part_fields' %>
+    </div>
   <div class="field">
     <%= f.label :cost %><br>
     <%= f.text_field :cost %>
