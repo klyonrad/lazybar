@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# use simple_form for... forms.
+gem 'simple_form'
 # Use cocoon for nested forms
 gem 'cocoon'
 
