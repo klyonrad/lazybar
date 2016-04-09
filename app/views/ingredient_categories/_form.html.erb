@@ -1,7 +1,7 @@
-<%= form_for(@ingredient_category) do |f| %>
+<%= simple_form_for(@ingredient_category) do |f| %>
   <% if @ingredient_category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@ingredient_category.errors.count, "error") %> prohibited this ingredient_category from being saved:</h2>
+      <h2><%= pluralize(@ingredient_category.errors.count, 'error') %> prohibited this ingredient_category from being saved:</h2>
 
       <ul>
       <% @ingredient_category.errors.full_messages.each do |message| %>
@@ -12,10 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.input :name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit %>
   </div>
 <% end %>

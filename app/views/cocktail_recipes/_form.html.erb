@@ -1,7 +1,7 @@
 <%= simple_form_for(@cocktail_recipe) do |f| %>
   <% if @cocktail_recipe.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@cocktail_recipe.errors.count, "error") %> prohibited this cocktail_recipe from being saved:</h2>
+      <h2><%= pluralize(@cocktail_recipe.errors.count, 'error') %> prohibited this cocktail_recipe from being saved:</h2>
 
       <ul>
       <% @cocktail_recipe.errors.full_messages.each do |message| %>
@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.input :name %>
   </div>
     <h3>Ingredients:</h3>
     <%= f.simple_fields_for :cocktail_recipe_parts do |recipe_parts_form| %>
@@ -23,18 +22,15 @@
       <%= link_to_add_association 'add ingredient', f, :cocktail_recipe_parts, partial: 'recipe_part_fields' %>
     </div>
   <div class="field">
-    <%= f.label :cost %><br>
-    <%= f.text_field :cost %>
+    <%= f.input :cost %>
   </div>
   <div class="field">
-    <%= f.label :selling_price %><br>
-    <%= f.text_field :selling_price %>
+    <%= f.input :selling_price %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.input :description %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit %>
   </div>
 <% end %>

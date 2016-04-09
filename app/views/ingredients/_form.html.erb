@@ -1,7 +1,7 @@
-<%= form_for(@ingredient) do |f| %>
+<%= simple_form_for(@ingredient) do |f| %>
   <% if @ingredient.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+      <h2><%= pluralize(@ingredient.errors.count, 'error') %> prohibited this ingredient from being saved:</h2>
 
       <ul>
       <% @ingredient.errors.full_messages.each do |message| %>
@@ -12,26 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :ingredient_category_id %><br>
-    <%= f.text_field :ingredient_category_id %>
+    <%= f.association :ingredient_category, include_blank: false %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.input :name %>
   </div>
   <div class="field">
-    <%= f.label :price_per_cl %><br>
-    <%= f.text_field :price_per_cl %>
+    <%= f.input :price_per_cl %>
   </div>
   <div class="field">
-    <%= f.label :available %><br>
-    <%= f.check_box :available %>
+    <%= f.input :available %>
   </div>
   <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_field :comment %>
+    <%= f.input :comment %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit %>
   </div>
 <% end %>

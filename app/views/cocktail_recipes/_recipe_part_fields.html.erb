@@ -1,6 +1,6 @@
 <div class="nested-fields">
   <div class="field">
-    <%= f.association :ingredient_category %>
+    <%= f.association :ingredient_category, include_blank: false %>
   </div>
   <div class="field">
     <%= f.input :amount %>
