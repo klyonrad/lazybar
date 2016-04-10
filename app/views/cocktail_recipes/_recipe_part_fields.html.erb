@@ -5,6 +5,7 @@
   <div class="field">
     <%= f.association :ingredient, collection: IngredientCategory.all,
                       as: :grouped_select, group_method: :ingredients, include_blank: false %>
+    <%= f.input :strict %>
   </div>
   <div class="field">
     <%= f.input :amount %>

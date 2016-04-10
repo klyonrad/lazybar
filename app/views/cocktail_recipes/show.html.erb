@@ -10,9 +10,14 @@
       <strong>Ingredients:</strong>
       <% @cocktail_recipe.cocktail_recipe_parts.each do |recipe_part| %>
         <ul>
-          <%= recipe_part.amount %> ml <%= recipe_part.ingredient_category.name %>,
-          <strong>default: </strong>
-          <%= recipe_part.ingredient.name %>
+          <%= recipe_part.amount %> ml
+          <% if recipe_part.strict %>
+              <%= recipe_part.ingredient.name %>
+          <% else %>
+              <%= recipe_part.ingredient_category.name %>,
+              <strong>default: </strong>
+              <%= recipe_part.ingredient.name %>
+          <% end %>
         </ul>
     <% end %>
     </p>

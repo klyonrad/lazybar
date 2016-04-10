@@ -75,7 +75,7 @@ class CocktailRecipesController < ApplicationController # rubocop:disable Style/
       :cost,
       :selling_price,
       :description,
-      cocktail_recipe_parts_attributes: [:id, :ingredient_category_id, :ingredient_id, :amount, :_destroy]
+      cocktail_recipe_parts_attributes: [:id, :ingredient_category_id, :ingredient_id, :strict, :amount, :_destroy]
     )
   end
 end
