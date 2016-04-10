@@ -23,9 +23,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # use simple_form for... forms.
-gem 'simple_form'
+gem 'simple_form', '~> 3.2.1'
 # Use cocoon for nested forms
-gem 'cocoon'
+gem 'cocoon', '~> 1.2.8'
 # Use Unitwise for flexible storage of volume measurements
 gem 'unitwise', '~> 2.0.0'
 
