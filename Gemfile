@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form'
 # Use cocoon for nested forms
 gem 'cocoon'
+# Use Unitwise for flexible storage of volume measurements
+gem 'unitwise', '~> 2.0.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
