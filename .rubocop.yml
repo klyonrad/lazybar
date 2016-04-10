@@ -1,5 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
 AllCops:
   Include:
     - '**/Rakefile'
@@ -7,7 +5,8 @@ AllCops:
   Exclude:
     - 'bin/**/*'
     - 'tmp/**/*'
-    - 'db/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
     - 'config/**/*'
     - 'spec/**/*'
     - 'test/**/*'
@@ -20,6 +19,8 @@ Style/Documentation:
 
 Metrics/LineLength:
   Max: 120
+  Exclude:
+    - 'db/seeds.rb'
 
 Style/Documentation:
   Enabled: true
