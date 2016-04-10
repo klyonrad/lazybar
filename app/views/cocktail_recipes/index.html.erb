@@ -22,9 +22,14 @@
         <td><%= cocktail_recipe.selling_price %></td>
         <% if cocktail_recipe.cocktail_recipe_parts %>
             <td>
+              <ul>
               <% cocktail_recipe.cocktail_recipe_parts.each do |recipe_part| %>
-                  <%= recipe_part.ingredient_category.name %>,
+                  <li>
+                    <%= sprintf('%.2g', recipe_part.amount / 10) %>
+                    <%= recipe_part.strict ? recipe_part.ingredient.name : recipe_part.ingredient_category.name %>
+                  </li>
             <% end %>
+              </ul>
             </td>
         <% end %>
         <td><%= cocktail_recipe.description %></td>
