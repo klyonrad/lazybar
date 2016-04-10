@@ -75,7 +75,7 @@ class CocktailRecipesController < ApplicationController
       :cost,
       :selling_price,
       :description,
-      cocktail_recipe_parts_attributes: [:id, :ingredient_category_id, :amount, :_destroy]
+      cocktail_recipe_parts_attributes: [:id, :ingredient_category_id, :ingredient_id, :amount, :_destroy]
     )
   end
 end
