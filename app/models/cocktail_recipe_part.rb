@@ -12,6 +12,7 @@ class CocktailRecipePart < ActiveRecord::Base
   validates :cocktail_recipe, presence: true
   validates :ingredient_category, presence: true
   validates :ingredient, presence: true
+  validates :amount, presence: true
   validate :ingredient_needs_to_match_category
 
   private
