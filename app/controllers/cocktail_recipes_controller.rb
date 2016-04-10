@@ -1,4 +1,4 @@
-class CocktailRecipesController < ApplicationController
+class CocktailRecipesController < ApplicationController # rubocop:disable Style/Documentation
   before_action :set_cocktail_recipe, only: [:show, :edit, :update, :destroy]
 
   # GET /cocktail_recipes

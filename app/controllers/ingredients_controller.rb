@@ -1,4 +1,4 @@
-class IngredientsController < ApplicationController
+class IngredientsController < ApplicationController # rubocop:disable Style/Documentation
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
   # GET /ingredients

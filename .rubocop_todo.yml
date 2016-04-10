@@ -11,13 +11,3 @@ Style/Documentation:
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/ingredient_categories_controller.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/ingredient_categories_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/EmptyLinesAroundAccessModifier:
-  Exclude:
-    - 'app/controllers/ingredient_categories_controller.rb'

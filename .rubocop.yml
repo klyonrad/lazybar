@@ -13,8 +13,13 @@ AllCops:
     - 'test/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
 
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+
 Metrics/LineLength:
   Max: 120
 
 Style/Documentation:
-  Enabled: false
+  Enabled: true

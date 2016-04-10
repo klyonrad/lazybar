@@ -1,7 +1,12 @@
+# This model represents an individual part of a Cocktail Recipe
+#   - cocktail_recipe_id
+#   - ingredient_category_id
+#   - ingredient_id (the default ingredient)
+#   - amount
 class CocktailRecipePart < ActiveRecord::Base
   belongs_to :cocktail_recipe, inverse_of: :cocktail_recipe_parts
   belongs_to :ingredient_category
-  belongs_to :ingredient # The Default ingredient
+  belongs_to :ingredient
 
   validates :cocktail_recipe, presence: true
   validates :ingredient_category, presence: true

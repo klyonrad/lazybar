@@ -1,4 +1,4 @@
-class IngredientCategoriesController < ApplicationController
+class IngredientCategoriesController < ApplicationController # rubocop:disable Style/Documentation
   before_action :set_ingredient_category, only: [:show, :edit, :update, :destroy]
 
   # GET /ingredient_categories
@@ -62,6 +62,7 @@ class IngredientCategoriesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_ingredient_category
     @ingredient_category = IngredientCategory.find(params[:id])
