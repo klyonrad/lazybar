@@ -97,16 +97,31 @@ Ingredient.create!([
                     { name: 'Tabu Absinth', price_per_cl: 0.639, ingredient_category: category('Absinth') }
                   ])
 
-CocktailRecipe.create([{ name: 'Mischmasch' }])
+def ingredient(name)
+  Ingredient.find_by_name(name)
+end
 
-CocktailRecipePart.create([
-                            { cocktail_recipe_id:     1,
-                              ingredient_category_id: 3,
-                              amount:                 2.5 },
-                            { cocktail_recipe_id:     1,
-                              ingredient_category_id: 2,
-                              amount:                 2.5 },
-                            { cocktail_recipe_id:     1,
-                              ingredient_category_id: 1,
-                              amount:                 2.5 }
-                          ])
+CocktailRecipe.create([
+                        { name: 'Gin & Tonic', cocktail_recipe_parts:
+                                [
+                                  CocktailRecipePart.new(ingredient: ingredient('Finsbury Platinum Dry'),
+                                                         ingredient_category: ingredient('Finsbury Platinum Dry').ingredient_category,
+                                                         amount: 50),
+                                  CocktailRecipePart.new(ingredient: ingredient('FeverTree Mediterranean'),
+                                                         ingredient_category: ingredient('FeverTree Mediterranean').ingredient_category,
+                                                         amount: 100)
+                                ] },
+                        { name: 'Negroni', cocktail_recipe_parts:
+                                [
+                                  CocktailRecipePart.new(ingredient: ingredient('Bombay Saphire 37%'),
+                                                         ingredient_category: ingredient('Bombay Saphire 37%').ingredient_category,
+                                                         amount: 40),
+                                  CocktailRecipePart.new(ingredient: ingredient('Campari'),
+                                                         strict: true,
+                                                         ingredient_category: ingredient('Campari').ingredient_category,
+                                                         amount: 40),
+                                  CocktailRecipePart.new(ingredient: ingredient('Martini Rosso'),
+                                                         ingredient_category: ingredient('Martini Rosso').ingredient_category,
+                                                         amount: 40)
+                                ] }
+                      ])
