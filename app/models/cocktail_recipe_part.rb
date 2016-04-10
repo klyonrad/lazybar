@@ -2,7 +2,8 @@
 #   - cocktail_recipe_id
 #   - ingredient_category_id
 #   - ingredient_id (the default ingredient)
-#   - amount
+#   - amount: the amount in millilitre
+#   - strict: boolean that sets if we want the specific brand / ingredient and not allow others
 class CocktailRecipePart < ActiveRecord::Base
   belongs_to :cocktail_recipe, inverse_of: :cocktail_recipe_parts
   belongs_to :ingredient_category
