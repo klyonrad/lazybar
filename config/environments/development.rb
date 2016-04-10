@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # https://github.com/charliesome/better_errors/wiki#opening-files-in-rubymine
+  BetterErrors.editor='x-mine://open?file=%{file}&line=%{line}' if defined?(BetterErrors)
 end
