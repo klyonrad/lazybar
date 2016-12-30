@@ -43,6 +43,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'rails-controller-testing'
 end
 
 group :development do
