@@ -39,6 +39,9 @@ group :development do
   gem 'spring' # Spring speeds up development by keeping your application running in the background
 end
 
+### analysis
+gem 'sentry-raven', '~> 2.2' # sentry for error logging
+
 ### Deployment
 gem 'rails_12factor', group: :production # For Deployment to heroku
 
