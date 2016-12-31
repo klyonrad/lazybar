@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController # rubocop:disable Style/Documentation
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:create, :edit, :update, :destroy]
 
   # GET /ingredients
   # GET /ingredients.json
