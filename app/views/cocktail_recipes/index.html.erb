@@ -34,8 +34,10 @@
         <% end %>
         <td><%= cocktail_recipe.description %></td>
         <td><%= link_to 'Show', cocktail_recipe %></td>
-        <td><%= link_to 'Edit', edit_cocktail_recipe_path(cocktail_recipe) %></td>
-        <td><%= link_to 'Destroy', cocktail_recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if admin_signed_in? %>
+            <td><%= link_to 'Edit', edit_cocktail_recipe_path(cocktail_recipe) %></td>
+            <td><%= link_to 'Destroy', cocktail_recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
