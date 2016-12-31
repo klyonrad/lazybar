@@ -7,6 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<p class="notice">
+  <%= notice %>
+</p>
+<p class="alert">
+  <%= alert %>
+</p>
 <%= link_to 'Kategorien', ingredient_categories_path %>
 <%= link_to 'Zutaten', ingredients_path %>
 <%= link_to 'Cocktails', cocktail_recipes_path %>
