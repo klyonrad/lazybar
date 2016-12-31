@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161231004649) do
+ActiveRecord::Schema.define(version: 20161231165008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 20161231004649) do
   end
 
   create_table "cocktail_recipe_parts", force: :cascade do |t|
-    t.integer  "cocktail_recipe_id",                              null: false
-    t.integer  "ingredient_category_id",                          null: false
+    t.integer  "cocktail_recipe_id",                                             null: false
+    t.integer  "ingredient_category_id",                                         null: false
     t.integer  "ingredient_id"
     t.decimal  "amount",                 precision: 15, scale: 9
-    t.boolean  "strict"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.boolean  "strict",                                          default: true
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
     t.index ["cocktail_recipe_id"], name: "index_cocktail_recipe_parts_on_cocktail_recipe_id", using: :btree
     t.index ["ingredient_category_id"], name: "index_cocktail_recipe_parts_on_ingredient_category_id", using: :btree
     t.index ["ingredient_id"], name: "index_cocktail_recipe_parts_on_ingredient_id", using: :btree
