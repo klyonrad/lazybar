@@ -1,5 +1,6 @@
 class CocktailRecipesController < ApplicationController # rubocop:disable Style/Documentation
   before_action :set_cocktail_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:create, :edit, :update, :destroy]
 
   # GET /cocktail_recipes
   # GET /cocktail_recipes.json

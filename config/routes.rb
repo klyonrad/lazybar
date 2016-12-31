@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
+  devise_for :admins
+  devise_for :users
   resources :cocktail_recipes
-  root to: 'ingredients#index'
+  root to: 'cocktail_recipes#index'
   resources :ingredients
   resources :ingredient_categories
   # The priority is based upon order of creation: first created -> highest priority.
