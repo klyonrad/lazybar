@@ -2,7 +2,7 @@
 
 <h1>Listing Cocktail Recipes</h1>
 
-<table>
+<table class="uk-table uk-margin">
   <thead>
     <tr>
       <th>Name</th>
@@ -33,7 +33,9 @@
             </td>
         <% end %>
         <td><%= cocktail_recipe.description %></td>
-        <td><%= link_to 'Show', cocktail_recipe %></td>
+        <td>
+          <%= link_to 'Show', cocktail_recipe, class: 'uk-button uk-button-default' %>
+        </td>
         <% if admin_signed_in? %>
             <td><%= link_to 'Edit', edit_cocktail_recipe_path(cocktail_recipe) %></td>
             <td><%= link_to 'Destroy', cocktail_recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
