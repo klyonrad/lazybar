@@ -2,14 +2,51 @@
 
 <h1>Listing Cocktail Recipes</h1>
 
-<table class="uk-table uk-margin">
+<div class="uk-grid uk-flex-center data-uk-grid-match uk-child-width-1-2@s uk-child-width-1-5@m" > <!--  data-uk-grid-match="{target:'.equal-height'}" -->
+  <% @cocktail_recipes.each do |cocktail_recipe| %>
+      <div class="uk-card uk-card-small uk-card-body uk-card-default uk-card-hover uk-margin-left uk-margin-top">
+        <div class="uk-card-header">
+          <h3 class="uk-card-title">
+            <%= cocktail_recipe.name %>
+          </h3>
+        </div>
+        <dl class="equal-height uk-description-list uk-description-list-divider">
+          <dt>Price</dt>
+          <dd><%= cocktail_recipe.selling_price %></dd>
+          <% if cocktail_recipe.cocktail_recipe_parts %>
+              <dt>Ingredients</dt>
+              <dd>
+                <ul class="uk-list uk-list-bullet">
+                  <% cocktail_recipe.cocktail_recipe_parts.each do |recipe_part| %>
+                      <li>
+                        <%= sprintf('%.2g', recipe_part.amount / 10) %>
+                        <%= recipe_part.strict ? recipe_part.ingredient.name : recipe_part.ingredient_category.name %>
+                      </li>
+                  <% end %>
+                </ul>
+              </dd>
+          <% end %>
+        </dl>
+
+        <div class="uk-card-footer">
+          <%= link_to 'Show', cocktail_recipe, class: 'uk-button uk-button-default' %>
+          <% if admin_signed_in? %>
+              <%= link_to 'Edit', edit_cocktail_recipe_path(cocktail_recipe), class: 'uk-button uk-button-primary' %>
+              <%= link_to 'Destroy', cocktail_recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<!--<table class="uk-table uk-table-responsive uk-table-small uk-table-hover uk-table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Cost</th>
       <th>Selling price</th>
       <th>Ingredients</th>
-      <th>Description</th>
+      <th class="uk-table-shrink">Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -43,7 +80,7 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table>-->
 
 <br>
 
