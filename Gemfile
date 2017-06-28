@@ -10,7 +10,6 @@ gem 'rails_admin', '~> 1.2.0'
 
 ### assets
 gem 'sass-rails', '~> 5.0'
-gem 'webpacker' # triggers yarn install https://devcenter.heroku.com/changelog-items/1114
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
