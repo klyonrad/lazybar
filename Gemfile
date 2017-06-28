@@ -46,5 +46,5 @@ gem 'sentry-raven', '~> 2.5' # sentry for error logging
 ### Deployment
 gem 'rails_12factor', group: :production # For Deployment to heroku
 
-gem 'rake', '~> 11.3'
+gem 'rake', '~> 12.0'
 ruby '2.3.3'
