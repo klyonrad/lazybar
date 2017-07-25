@@ -1,7 +1,4 @@
 AllCops:
-  Include:
-    - '**/Rakefile'
-    - '**/config.ru'
   Exclude:
     - 'bin/**/*'
     - 'tmp/**/*'
@@ -10,7 +7,7 @@ AllCops:
     - 'config/**/*'
     - 'spec/**/*'
     - 'test/**/*'
-    - !ruby/regexp /old_and_unused\.rb$/
+#    - !ruby/regexp /old_and_unused\.rb$/
 
 Style/Documentation:
   Exclude:
@@ -18,9 +15,14 @@ Style/Documentation:
     - 'test/**/*'
 
 Metrics/LineLength:
-  Max: 120
+  Max: 130
   Exclude:
     - 'db/seeds.rb'
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: '()'
+    '%i':    '()'
 
 Style/Documentation:
   Enabled: true

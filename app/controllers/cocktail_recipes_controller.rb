@@ -1,6 +1,6 @@
 class CocktailRecipesController < ApplicationController # rubocop:disable Style/Documentation
-  before_action :set_cocktail_recipe, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:create, :edit, :update, :destroy]
+  before_action :set_cocktail_recipe, only: %i(show edit update destroy)
+  before_action :authenticate_admin!, only: %i(create edit update destroy)
 
   # GET /cocktail_recipes
   # GET /cocktail_recipes.json
@@ -10,8 +10,7 @@ class CocktailRecipesController < ApplicationController # rubocop:disable Style/
 
   # GET /cocktail_recipes/1
   # GET /cocktail_recipes/1.json
-  def show
-  end
+  def show; end
 
   # GET /cocktail_recipes/new
   def new
@@ -19,8 +18,7 @@ class CocktailRecipesController < ApplicationController # rubocop:disable Style/
   end
 
   # GET /cocktail_recipes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /cocktail_recipes
   # POST /cocktail_recipes.json
@@ -76,7 +74,7 @@ class CocktailRecipesController < ApplicationController # rubocop:disable Style/
       :cost,
       :selling_price,
       :description,
-      cocktail_recipe_parts_attributes: [:id, :ingredient_category_id, :ingredient_id, :strict, :amount, :_destroy]
+      cocktail_recipe_parts_attributes: %i(id ingredient_category_id ingredient_id strict amount _destroy)
     )
   end
 end

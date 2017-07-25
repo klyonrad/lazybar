@@ -1,6 +1,6 @@
 class IngredientCategoriesController < ApplicationController # rubocop:disable Style/Documentation
-  before_action :set_ingredient_category, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:create, :edit, :update, :destroy]
+  before_action :set_ingredient_category, only: %i(show edit update destroy)
+  before_action :authenticate_admin!, only: %i(create edit update destroy)
 
   # GET /ingredient_categories
   # GET /ingredient_categories.json
@@ -10,8 +10,7 @@ class IngredientCategoriesController < ApplicationController # rubocop:disable S
 
   # GET /ingredient_categories/1
   # GET /ingredient_categories/1.json
-  def show
-  end
+  def show; end
 
   # GET /ingredient_categories/new
   def new
@@ -19,8 +18,7 @@ class IngredientCategoriesController < ApplicationController # rubocop:disable S
   end
 
   # GET /ingredient_categories/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /ingredient_categories
   # POST /ingredient_categories.json
