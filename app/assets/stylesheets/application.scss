@@ -1,35 +1,35 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- */
+//
+// This is a manifest file that'll be compiled into application.css, which will include all the files
+// listed below.
+//
+// Any CSS an SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+// or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+//
+// You're free to add application-wide styles to this file and they'll appear at the bottom of the
+// compiled file so the styles you add here take precedence over styles defined in any styles
+// defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+// file per style scope.
+//
+//
 
 
 // importing full UIkit theme
 // 1. Your custom variables and variable overwrites.
-$global-link-color: #DA7D02;
+$global-link-color: #da7d02;
 // 2. Import default variables and available mixins.
-@import "uikit/src/scss/variables-theme.scss";
-@import "uikit/src/scss/mixins-theme.scss";
+@import 'uikit/src/scss/variables-theme';
+@import 'uikit/src/scss/mixins-theme';
 // 3. Your custom mixin overwrites.
 @mixin hook-card() { color: #000; }
 // 4. Import UIkit.
-@import "uikit/src/scss/uikit-theme.scss";
+@import 'uikit/src/scss/uikit-theme';
 
 
-@import "select2/src/scss/core";
+@import 'select2/src/scss/core';
 
 // @import "styles";
 
 // custom overwrites
-@import "cocktail_recipes";
-@import "ingredient_categories";
-@import "ingredients";
+@import 'cocktail_recipes';
+@import 'ingredient_categories';
+@import 'ingredients';
