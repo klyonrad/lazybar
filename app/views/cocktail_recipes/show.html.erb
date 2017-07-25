@@ -1,42 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1 class="uk-heading-primary">
   <%= @cocktail_recipe.name %>
-</p>
+</h1>
 
-<% if @cocktail_recipe.cocktail_recipe_parts %>
-    <p>
-      <strong>Ingredients:</strong>
-      <% @cocktail_recipe.cocktail_recipe_parts.each do |recipe_part| %>
-        <ul>
-          <%= recipe_part.amount %> ml
-          <% if recipe_part.strict %>
-              <%= recipe_part.ingredient.name %>
-          <% else %>
-              <%= recipe_part.ingredient_category.name %>,
-              <strong>default: </strong>
-              <%= recipe_part.ingredient.name %>
-          <% end %>
-        </ul>
-    <% end %>
-    </p>
+<div class="uk-grid">
+
+  <% if @cocktail_recipe.cocktail_recipe_parts %>
+    <div class="uk-width-xlarge">
+      <h2>Ingredients:</h2>
+      <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover">
+        <thead>
+        <tr>
+          <th class="uk-table-shrink">Amount</th>
+          <th>Part</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @cocktail_recipe.cocktail_recipe_parts.each do |recipe_part| %>
+            <tr>
+              <td>
+                <%= recipe_part.amount %> ml
+              </td>
+              <td>
+                <% if recipe_part.strict %>
+                    <%= recipe_part.ingredient.name %>
+                <% else %>
+                    <%= recipe_part.ingredient_category.name %>,
+                    <strong>default: </strong>
+                    <%= recipe_part.ingredient.name %>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+
+  <div class="uk-width-xlarge">
+    <dl class="uk-description-list">
+      <dt>Cost</dt>
+      <dd>
+        <%= @cocktail_recipe.cost %>
+      </dd>
+      <dt>Selling price</dt>
+      <dd>
+        <%= @cocktail_recipe.selling_price %>
+      </dd>
+      <dt>Description</dt>
+      <dd class="uk-text-break">
+        <%= @cocktail_recipe.description %>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<% if admin_signed_in? %>
+    <%= link_to 'Edit', edit_cocktail_recipe_path(@cocktail_recipe) %> |
+    <%= link_to 'Back', cocktail_recipes_path %>
 <% end %>
-
-<p>
-  <strong>Cost:</strong>
-  <%= @cocktail_recipe.cost %>
-</p>
-
-<p>
-  <strong>Selling price:</strong>
-  <%= @cocktail_recipe.selling_price %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @cocktail_recipe.description %>
-</p>
-
-<%= link_to 'Edit', edit_cocktail_recipe_path(@cocktail_recipe) %> |
-<%= link_to 'Back', cocktail_recipes_path %>
