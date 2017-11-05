@@ -20,7 +20,8 @@ require 'rails_helper'
 
 RSpec.describe IngredientsController, type: :controller do
   let(:test_admin) {
-    Admin.create email: 'test@example.com', password: 'battery horse staple'
+    #Admin.create email: 'test@example.com', password: 'battery horse staple'
+    create :admin
   }
 
   # This should return the minimal set of attributes required to create a valid
