@@ -30,7 +30,15 @@ RSpec.describe CocktailRecipePart, type: :model do
       expect(subject).not_to be_valid
     end
 
-    # it 'is not valid with negative amount'
+    it 'is not valid with negative amount' do
+      subject.amount = -30
+      expect(subject).not_to be_valid
+    end
+
+    it 'is not valid with zero amount' do
+      subject.amount = 0
+      expect(subject).not_to be_valid
+    end
 
     it 'is not valid when ingredient and category mismatch' do
       subject.ingredient_category = create :ingredient_category

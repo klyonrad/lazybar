@@ -24,6 +24,16 @@ RSpec.describe Ingredient, type: :model do
       subject.price_per_cl = nil
       expect(subject).not_to be_valid
     end
+
+    it 'is not valid with negative price' do
+      subject.price_per_cl = -0.30
+      expect(subject).not_to be_valid
+    end
+
+    it 'is valid with price of zero' do
+      subject.price_per_cl = 0
+      expect(subject).to be_valid
+    end
   end
 
   describe 'other validations' do

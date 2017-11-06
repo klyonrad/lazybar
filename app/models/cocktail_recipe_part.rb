@@ -13,6 +13,7 @@ class CocktailRecipePart < ActiveRecord::Base
   validates :ingredient_category, presence: true
   validates :ingredient, presence: true
   validates :amount, presence: true
+  validates :amount, numericality: { greater_than: 0 }
   validate :ingredient_needs_to_match_category
 
   private

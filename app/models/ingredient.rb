@@ -4,5 +4,6 @@ class Ingredient < ActiveRecord::Base
   belongs_to :ingredient_category
   validates :name, presence: true, uniqueness: true
   validates :price_per_cl, presence: true
+  validates :price_per_cl, numericality: { greater_than_or_equal_to: 0 }
   validates :ingredient_category_id, presence: true
 end
