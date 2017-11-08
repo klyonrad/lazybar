@@ -5,7 +5,7 @@ FactoryBot.define do
   end
 
   factory :user do
-    email 'test@example.com'
+    sequence(:email) { |n| "test#{n}@example.com" }
     password 'battery horse staple'
   end
 
@@ -47,5 +47,10 @@ FactoryBot.define do
       end
       cocktail_recipe.cocktail_recipe_parts = cocktail_parts
     end
+  end
+
+  factory :user_cocktail_like do
+    association :user
+    association :cocktail_recipe
   end
 end
