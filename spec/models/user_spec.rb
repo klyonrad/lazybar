@@ -39,4 +39,15 @@ RSpec.describe User, type: :model do
     liked_cocktails = subject.liked_cocktails
     expect(liked_cocktails[0]).to eq(cocktails[0])
   end
+
+  it 'shows that user likes a specific cocktail' do
+    cocktail = create :cocktail_recipe
+    subject.like_cocktail cocktail
+    expect(subject.likes_cocktail? cocktail).to be_truthy
+  end
+
+  it 'shows that user does not like a specific cocktail' do
+    cocktail = create :cocktail_recipe
+    expect(subject.likes_cocktail? cocktail).to be_falsey
+  end
 end

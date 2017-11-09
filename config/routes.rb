@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
   devise_for :admins
   devise_for :users
-  resources :cocktail_recipes
+  resources :cocktail_recipes do
+    member do
+      put 'like', to: 'cocktail_recipes#like'
+      put 'unlike', to: 'cocktail_recipes#unlike'
+    end
+  end
   root to: 'cocktail_recipes#index'
   resources :ingredients
   resources :ingredient_categories

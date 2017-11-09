@@ -1,5 +1,5 @@
 class CocktailRecipesController < ApplicationController # rubocop:disable Style/Documentation
-  before_action :set_cocktail_recipe, only: %i(show edit update destroy)
+  before_action :set_cocktail_recipe, only: %i(show edit update destroy like unlike)
   before_action :authenticate_admin!, only: %i(create edit update destroy)
 
   # GET /cocktail_recipes
@@ -57,6 +57,30 @@ class CocktailRecipesController < ApplicationController # rubocop:disable Style/
     respond_to do |format|
       format.html { redirect_to cocktail_recipes_url, notice: 'Cocktail recipe was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def like
+    respond_to do |format|
+      if current_user.like_cocktail(@cocktail_recipe).persisted?
+        format.html { redirect_to @cocktail_recipe, notice: 'Liked that cocktail!' }
+        format.json { render :show, status: :ok, location: @cocktail_recipe }
+      else
+        format.html { render :show, status: 500, notice: 'went wrong' }
+        format.json { render json: @cocktail_recipe.errors, status: 500 }
+      end
+    end
+  end
+
+  def unlike
+    respond_to do |format|
+      if current_user.unlike_cocktail(@cocktail_recipe).persisted?
+        format.html { redirect_to @cocktail_recipe, notice: 'Liked that cocktail!' }
+        format.json { render :show, status: :ok, location: @cocktail_recipe }
+      else
+        format.html { render :show, status: 500, notice: 'went wrong' }
+        format.json { render json: @cocktail_recipe.errors, status: 500 }
+      end
     end
   end
 

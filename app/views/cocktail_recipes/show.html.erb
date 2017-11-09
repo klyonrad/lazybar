@@ -57,6 +57,13 @@
   </div>
 </div>
 
+<% if user_signed_in? %>
+    <% if current_user.likes_cocktail? @cocktail_recipe %>
+        <%= link_to 'UNLIKE', unlike_cocktail_recipe_path(@cocktail_recipe), method: :put %>
+    <% else %>
+        <%= link_to 'LIKE', like_cocktail_recipe_path(@cocktail_recipe), method: :put %>
+    <% end %>
+<% end %>
 <% if admin_signed_in? %>
     <%= link_to 'Edit', edit_cocktail_recipe_path(@cocktail_recipe) %> |
     <%= link_to 'Back', cocktail_recipes_path %>
