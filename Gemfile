@@ -44,4 +44,4 @@ gem 'sentry-raven', '~> 2.5' # sentry for error logging
 gem 'rails_12factor', group: :production # For Deployment to heroku
 
 gem 'rake'
-ruby '2.3.5'
+ruby '2.4.3'
