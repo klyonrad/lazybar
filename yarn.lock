@@ -17,6 +17,6 @@ select2@~4.0.3:
     almond "~0.3.1"
     jquery-mousewheel "~3.1.13"
 
-uikit@~3.0.0-beta.25:
-  version "3.0.0-beta.25"
-  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.0.0-beta.25.tgz#34761c3349314036b4315f2027db00909b42852a"
+uikit@~3.0.0-beta.35:
+  version "3.0.0-beta.35"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.0.0-beta.35.tgz#c33b08c139f0c2a1f4c35dfb30c7ff987e48c371"
