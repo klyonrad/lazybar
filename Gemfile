@@ -18,6 +18,7 @@ gem 'turbolinks'
 
 ### Frontend stuff
 gem 'cocoon', '~> 1.2' # Use cocoon for nested forms
+gem 'haml-rails', '~> 1.0'
 gem 'simple_form', '~> 3.5.0'
 
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
