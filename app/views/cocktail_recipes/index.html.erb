@@ -38,49 +38,6 @@
   <% end %>
 </div>
 
-<!--<table class="uk-table uk-table-responsive uk-table-small uk-table-hover uk-table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Cost</th>
-      <th>Selling price</th>
-      <th>Ingredients</th>
-      <th class="uk-table-shrink">Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cocktail_recipes.each do |cocktail_recipe| %>
-      <tr>
-        <td><%= cocktail_recipe.name %></td>
-        <td><%= cocktail_recipe.cost %></td>
-        <td><%= cocktail_recipe.selling_price %></td>
-        <% if cocktail_recipe.cocktail_recipe_parts %>
-            <td>
-              <ul>
-              <% cocktail_recipe.cocktail_recipe_parts.each do |recipe_part| %>
-                  <li>
-                    <%= sprintf('%.2g', recipe_part.amount / 10) %>
-                    <%= recipe_part.strict ? recipe_part.ingredient.name : recipe_part.ingredient_category.name %>
-                  </li>
-            <% end %>
-              </ul>
-            </td>
-        <% end %>
-        <td><%= cocktail_recipe.description %></td>
-        <td>
-          <%= link_to 'Show', cocktail_recipe, class: 'uk-button uk-button-default' %>
-        </td>
-        <% if admin_signed_in? %>
-            <td><%= link_to 'Edit', edit_cocktail_recipe_path(cocktail_recipe) %></td>
-            <td><%= link_to 'Destroy', cocktail_recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>-->
-
 <br>
 
 <%= link_to 'New Cocktail recipe', new_cocktail_recipe_path %>
