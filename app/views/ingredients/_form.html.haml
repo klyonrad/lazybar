@@ -1,0 +1,21 @@
+= simple_form_for(@ingredient) do |f|
+  - if @ingredient.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@ingredient.errors.count, 'error')
+        prohibited this ingredient from being saved:
+      %ul
+        - @ingredient.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.association :ingredient_category, include_blank: false
+  .field
+    = f.input :name
+  .field
+    = f.input :price_per_cl
+  .field
+    = f.input :available
+  .field
+    = f.input :comment
+  .actions
+    = f.button :submit

@@ -1,0 +1,46 @@
+%p#notice= notice
+%h1.uk-heading-primary
+  = @cocktail_recipe.name
+.uk-grid
+  - if @cocktail_recipe.cocktail_recipe_parts
+    .uk-width-xlarge
+      %h2 Ingredients:
+      %table.uk-table.uk-table-responsive.uk-table-divider.uk-table-hover
+        %thead
+          %tr
+            %th.uk-table-shrink Amount
+            %th Part
+        %tbody
+          - @cocktail_recipe.cocktail_recipe_parts.each do |recipe_part|
+            %tr
+              %td
+                = recipe_part.amount
+                ml
+              %td
+                - if recipe_part.strict
+                  = recipe_part.ingredient.name
+                - else
+                  = recipe_part.ingredient_category.name
+                  ,
+                  %strong default:
+                  = recipe_part.ingredient.name
+  .uk-width-xlarge
+    %dl.uk-description-list
+      %dt Cost
+      %dd
+        = @cocktail_recipe.cost
+      %dt Selling price
+      %dd
+        = @cocktail_recipe.selling_price
+      %dt Description
+      %dd.uk-text-break
+        = @cocktail_recipe.description
+- if user_signed_in?
+  - if current_user.likes_cocktail? @cocktail_recipe
+    = link_to 'UNLIKE', unlike_cocktail_recipe_path(@cocktail_recipe), method: :put
+  - else
+    = link_to 'LIKE', like_cocktail_recipe_path(@cocktail_recipe), method: :put
+- if admin_signed_in?
+  = link_to 'Edit', edit_cocktail_recipe_path(@cocktail_recipe)
+  |
+  \#{link_to 'Back', cocktail_recipes_path}

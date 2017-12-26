@@ -1,0 +1,25 @@
+%p#notice= notice
+%h1 Listing Ingredients
+%table
+  %thead
+    %tr
+      %th Category
+      %th Name
+      %th Price per cl
+      %th Available
+      %th Comment
+      %th{colspan: '3'}
+  %tbody
+    - @ingredients.each do |ingredient|
+      %tr
+        %td= ingredient.ingredient_category.name
+        %td= ingredient.name
+        %td= ingredient.price_per_cl
+        %td= ingredient.available
+        %td= ingredient.comment
+        %td= link_to 'Show', ingredient
+        - if admin_signed_in?
+          %td= link_to 'Edit', edit_ingredient_path(ingredient)
+          %td= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Ingredient', new_ingredient_path

@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Ingredient category:
+  = @ingredient.ingredient_category.name
+%p
+  %strong Name:
+  = @ingredient.name
+%p
+  %strong Price per cl:
+  = @ingredient.price_per_cl
+%p
+  %strong Available:
+  = @ingredient.available
+%p
+  %strong Comment:
+  = @ingredient.comment
+= link_to 'Edit', edit_ingredient_path(@ingredient)
+|
+= link_to 'Back', ingredients_path

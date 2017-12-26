@@ -1,0 +1,10 @@
+.nested-fields
+  .field
+    = f.association :ingredient_category, include_blank: false
+  .field
+    = f.association :ingredient, collection: IngredientCategory.all,        |
+      as: :grouped_select, group_method: :ingredients, include_blank: false |
+    = f.input :strict
+  .field
+    = f.input :amount
+  = link_to_remove_association 'remove ingredient', f

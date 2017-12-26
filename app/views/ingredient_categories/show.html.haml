@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @ingredient_category.name
+= link_to 'Edit', edit_ingredient_category_path(@ingredient_category)
+|
+= link_to 'Back', ingredient_categories_path
