@@ -5,7 +5,9 @@ AllCops:
     - 'db/schema.rb'
     - 'db/migrate/**/*'
     - 'config/**/*'
-    - 'spec/**/*'
+    - 'spec/controllers/**/*'
+    - 'spec/views/**/*'
+    - 'spec/routing/**/*'
     - 'test/**/*'
 #    - !ruby/regexp /old_and_unused\.rb$/
 
@@ -21,7 +23,9 @@ Metrics/LineLength:
 
 Metrics/BlockLength:
   Exclude:
+    - 'spec/factories.rb'
     - 'spec/models/**/*'
+    - 'spec/requests/**/*'
 
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:

@@ -51,12 +51,21 @@ RSpec.describe CocktailRecipe, type: :model do
       expect(subject.cost).to eq 1.95 # instead of 1,947
     end
 
-    it 'gives the correct selling price, nicely rounded' do
+    it 'gives the correct selling price, nicely rounded down' do
       subject.parts.each do |part|
         part.ingredient.price_per_cl = 0.35
         part.amount = 50
       end
       expect(subject.selling_price).to eq 3.60 # cost is 3,5, selling price is 3,605
+    end
+
+    it 'gives the correct selling price, nicely rounded up' do
+      pending 'better rounding up is on feature list'
+      subject.parts.each do |part|
+        part.ingredient.price_per_cl = 0.355
+        part.amount = 50
+      end
+      expect(subject.selling_price).to eq 3.70 # cost is 3,55. selling price is 3,6565
     end
   end
 

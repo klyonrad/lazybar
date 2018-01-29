@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject {
-    create(:user)
-  }
+  subject { create(:user) }
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
@@ -43,11 +41,11 @@ RSpec.describe User, type: :model do
   it 'shows that user likes a specific cocktail' do
     cocktail = create :cocktail_recipe
     subject.like_cocktail cocktail
-    expect(subject.likes_cocktail? cocktail).to be_truthy
+    expect(subject.likes_cocktail?(cocktail)).to be_truthy
   end
 
   it 'shows that user does not like a specific cocktail' do
     cocktail = create :cocktail_recipe
-    expect(subject.likes_cocktail? cocktail).to be_falsey
+    expect(subject.likes_cocktail?(cocktail)).to be_falsey
   end
 end

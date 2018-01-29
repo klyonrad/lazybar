@@ -27,6 +27,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'factory_bot_rails', '~> 4.8.2'
+  gem 'faker'
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'

@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe IngredientCategory, type: :model do
-  subject {
-    build(:ingredient_category)
-  }
+  subject { build(:ingredient_category) }
+
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end

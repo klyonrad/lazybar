@@ -6,6 +6,8 @@ The cost and price is caulcated.
 
 The application is in a highly experimental state.
 
+[![Ebert](https://ebertapp.io/github/klyonrad/lazybar.svg)](https://ebertapp.io/github/klyonrad/lazybar)
+
 # Deployment
 
 This application can easily be run on heroku. Look into the corresponding guides on heroku.com.
