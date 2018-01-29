@@ -6,7 +6,7 @@ class CocktailRecipesController < ApplicationController # rubocop:disable Style/
   # GET /cocktail_recipes.json
   def index
     @cocktail_recipes =
-      CocktailRecipe.includes(cocktail_recipe_parts: [:ingredient, :ingredient_category]).all
+      CocktailRecipe.includes(cocktail_recipe_parts: %i(ingredient ingredient_category)).all
   end
 
   # GET /cocktail_recipes/1
