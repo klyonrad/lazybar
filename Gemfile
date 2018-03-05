@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.1.2'
 
 ### backend
-gem 'devise', '~> 4.3.0'
+gem 'devise', '~> 4.4.1'
 gem 'jbuilder', '~> 2.7' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'pg', '~> 0.18.4'
 gem 'rails_admin', '~> 1.2.0'
