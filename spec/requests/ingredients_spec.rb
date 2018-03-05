@@ -151,6 +151,36 @@ RSpec.describe 'Ingredients', type: :request do
     end
 
     context 'no Ingredient Category present' do
+      it 'shows error for create form' do
+        sign_in admin
+        post ingredients_path ingredient: { name: Faker::Food.ingredient, price_per_cl: 0.25, ingredient_category_id: 1 }
+        expect(response).not_to be_successful
+      end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    context 'with admin login' do
+      before { sign_in admin }
+
+      it 'destroys the requested ingredient' do
+        ingr = ingredient
+        expect do
+          sign_in admin
+          delete ingredient_path(ingr)
+        end.to change(Ingredient, :count).by(-1)
+        expect(response).to have_http_status(:found)
+      end
+    end
+
+    it 'does not destroy the ingredient' do
+      ingr = ingredient
+      expect { delete ingredient_path(ingr) }.to change(Ingredient, :count).by(0)
+    end
+
+    it 'redirects to the ingredients list' do
+      delete ingredient_path(ingredient)
+      expect(response).to redirect_to new_admin_session_path
     end
   end
 end

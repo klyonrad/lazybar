@@ -95,19 +95,4 @@ RSpec.describe IngredientsController, type: :controller do
     end
   end
 
-  describe 'DELETE #destroy' do
-    it 'destroys the requested ingredient' do
-      ingredient = Ingredient.create! valid_attributes
-      expect {
-        delete :destroy, { :id => ingredient.to_param }, admin_session
-      }.to change(Ingredient, :count).by(-1)
-    end
-
-    it 'redirects to the ingredients list' do
-      ingredient = Ingredient.create! valid_attributes
-      delete :destroy, { :id => ingredient.to_param }, admin_session
-      expect(response).to redirect_to(ingredients_url)
-    end
-  end
-
 end
