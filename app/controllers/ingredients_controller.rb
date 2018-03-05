@@ -1,11 +1,11 @@
 class IngredientsController < ApplicationController # rubocop:disable Style/Documentation
   before_action :set_ingredient, only: %i(show edit update destroy)
-  before_action :authenticate_admin!, only: %i(create edit update destroy)
+  before_action :authenticate_admin!, only: %i(new edit create update destroy)
 
   # GET /ingredients
   # GET /ingredients.json
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.includes(:ingredient_category).all
   end
 
   # GET /ingredients/1

@@ -36,7 +36,7 @@ RSpec.describe 'Ingredients', type: :request do
         it 'shows error for create form' do
           sign_in admin
           get new_ingredient_path
-          expect(response).not_to be_successful
+          expect(response).to be_successful # user will get error when attempting to save
         end
       end
 
@@ -52,13 +52,11 @@ RSpec.describe 'Ingredients', type: :request do
         end
 
         it 'does not show ingredient create form without login' do
-          pending 'not implemented yet'
           get new_ingredient_path
           expect(response).to redirect_to new_admin_session_path
         end
 
         it 'does not show ingredient create form without admin login' do
-          pending 'not implemented yet'
           sign_in user
           get new_ingredient_path
           expect(response).to redirect_to new_admin_session_path
