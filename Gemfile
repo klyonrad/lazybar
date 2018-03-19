@@ -6,7 +6,7 @@ gem 'rails', '~> 5.1.2'
 gem 'devise', '~> 4.3.0'
 gem 'jbuilder', '~> 2.7' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'pg', '~> 0.18.4'
-gem 'rails_admin', '~> 1.2.0'
+gem 'rails_admin', '~> 1.3.0'
 
 ### assets
 gem 'coffee-rails', '~> 4.2'
