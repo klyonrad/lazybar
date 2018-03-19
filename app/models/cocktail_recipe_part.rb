@@ -5,15 +5,11 @@
 #   - amount: the amount in millilitre
 #   - strict: boolean that sets if we want the specific brand / ingredient and not allow others
 class CocktailRecipePart < ActiveRecord::Base
-  belongs_to :cocktail_recipe, inverse_of: :cocktail_recipe_parts
-  belongs_to :ingredient_category
-  belongs_to :ingredient
+  belongs_to :cocktail_recipe, inverse_of: :cocktail_recipe_parts, required: true
+  belongs_to :ingredient_category, required: true
+  belongs_to :ingredient, required: true
 
-  validates :cocktail_recipe, presence: true
-  validates :ingredient_category, presence: true
-  validates :ingredient, presence: true
-  validates :amount, presence: true
-  validates :amount, numericality: { greater_than: 0 }
+  validates :amount, numericality: { greater_than: 0 }, presence: true
   validate :ingredient_needs_to_match_category
 
   private
