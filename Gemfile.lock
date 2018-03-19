@@ -141,7 +141,7 @@ GEM
     parallel (1.12.1)
     parser (2.5.0.4)
       ast (~> 2.4.0)
-    pg (0.18.4)
+    pg (1.0.0)
     powerpack (0.1.1)
     pry (0.11.2)
       coderay (~> 1.1.0)
@@ -301,7 +301,7 @@ DEPENDENCIES
   haml-rails (~> 1.0)
   jbuilder (~> 2.7)
   jquery-rails
-  pg (~> 0.18.4)
+  pg (~> 1.0.0)
   pry-rails
   rails (~> 5.1.2)
   rails-controller-testing
