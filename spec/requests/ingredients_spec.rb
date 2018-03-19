@@ -13,7 +13,7 @@ RSpec.describe 'Ingredients', type: :request do
 
   describe 'GET Requests' do
     describe '#index' do
-      it 'assigns all ingredients as @ingredients' do
+      it 'shows ingredient list with correct content' do
         ingredient
         get ingredients_path
         expect(response).to be_successful
@@ -143,7 +143,7 @@ RSpec.describe 'Ingredients', type: :request do
           end
 
           it "re-renders the 'new' template" do
-            post ingredients_path ingredient: duplicate_name_attributes
+            post ingredients_path(ingredient: duplicate_name_attributes)
             expect(response).to render_template('new')
           end
         end
@@ -153,8 +153,47 @@ RSpec.describe 'Ingredients', type: :request do
     context 'no Ingredient Category present' do
       it 'shows error for create form' do
         sign_in admin
-        post ingredients_path ingredient: { name: Faker::Food.ingredient, price_per_cl: 0.25, ingredient_category_id: 1 }
-        expect(response).not_to be_successful
+        post ingredients_path(ingredient: { name: Faker::Food.ingredient, price_per_cl: 0.25, ingredient_category_id: 1 })
+        expect(response.body).to match('category must exist')
+      end
+    end
+  end
+
+  describe 'PUT #update' do
+    describe 'with valid params' do
+      context 'with admin login' do
+        before { sign_in admin }
+
+        it 'updates the price' do
+          new_price = 0.5
+          patch ingredient_path(ingredient), params: { ingredient: { price_per_cl: new_price.to_s } }
+          expect(response.status).to eql 302
+          expect(ingredient.reload.price_per_cl).to eq new_price
+        end
+
+        it 'redirects to the ingredient' do
+          put ingredient_path(ingredient), params: { ingredient: valid_attributes }
+          expect(response).to redirect_to(ingredient)
+        end
+      end
+
+      context 'without login' do
+        # TODO
+      end
+
+      context 'with user login' do
+        # TODO
+      end
+    end
+
+    describe 'with invalid params' do
+      context 'with admin login' do
+        before { sign_in admin }
+
+        it "re-renders the 'edit' template" do
+          put ingredient_path(ingredient), params: { ingredient: { name: '' } }
+          expect(response).to render_template('edit')
+        end
       end
     end
   end
