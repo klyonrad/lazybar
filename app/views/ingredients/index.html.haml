@@ -18,8 +18,3 @@
         %td= ingredient.available
         %td= ingredient.comment
         %td= link_to 'Show', ingredient
-        - if admin_signed_in?
-          %td= link_to 'Edit', edit_ingredient_path(ingredient)
-          %td= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Ingredient', new_ingredient_path
