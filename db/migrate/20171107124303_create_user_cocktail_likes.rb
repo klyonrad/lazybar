@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateUserCocktailLikes < ActiveRecord::Migration[5.1]
   def up
     create_table :user_cocktail_likes do |t|

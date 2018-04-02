@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class IngredientCategoriesController < ApplicationController # rubocop:disable Style/Documentation
-  before_action :set_ingredient_category, only: %i(show edit update destroy)
-  before_action :authenticate_admin!, only: %i(create edit update destroy)
+  before_action :set_ingredient_category, only: %i[show edit update destroy]
+  before_action :authenticate_admin!, only: %i[create edit update destroy]
 
   # GET /ingredient_categories
   # GET /ingredient_categories.json

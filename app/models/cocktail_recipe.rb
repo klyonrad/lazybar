@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # from http://stackoverflow.com/a/36134208/1796645
 class CollectionLengthValidator < ActiveModel::Validations::LengthValidator
   def validate_each(record, attribute, value)

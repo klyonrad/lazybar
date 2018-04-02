@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IngredientsController < ApplicationController # rubocop:disable Style/Documentation
   before_action :set_ingredient, only: %i[show]
 

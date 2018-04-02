@@ -3,21 +3,25 @@ AllCops:
     - 'bin/**/*'
     - 'tmp/**/*'
     - 'db/schema.rb'
-    - 'db/migrate/**/*'
-    - 'config/**/*'
     - 'spec/controllers/**/*'
     - 'spec/views/**/*'
-    - 'spec/routing/**/*'
-    - 'test/**/*'
 #    - !ruby/regexp /old_and_unused\.rb$/
 
 Style/Documentation:
   Exclude:
     - 'spec/**/*'
-    - 'test/**/*'
+    - 'db/migrate/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**/*'
 
 Metrics/LineLength:
-  Max: 130
+  Max: 120
   Exclude:
     - 'db/seeds.rb'
 
@@ -26,14 +30,3 @@ Metrics/BlockLength:
     - 'spec/factories.rb'
     - 'spec/models/**/*'
     - 'spec/requests/**/*'
-
-Style/PercentLiteralDelimiters:
-  PreferredDelimiters:
-    default: '()'
-    '%i':    '()'
-
-Style/Documentation:
-  Enabled: true
-
-Style/FrozenStringLiteralComment:
-  Enabled: false

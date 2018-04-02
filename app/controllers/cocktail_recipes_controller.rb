@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class CocktailRecipesController < ApplicationController # rubocop:disable Style/Documentation
-  before_action :set_cocktail_recipe, only: %i(show edit update destroy like unlike)
-  before_action :authenticate_admin!, only: %i(create edit update destroy)
+  before_action :set_cocktail_recipe, only: %i[show edit update destroy like unlike]
+  before_action :authenticate_admin!, only: %i[create edit update destroy]
 
   # GET /cocktail_recipes
   # GET /cocktail_recipes.json
   def index
     @cocktail_recipes =
-      CocktailRecipe.includes(cocktail_recipe_parts: %i(ingredient ingredient_category)).all
+      CocktailRecipe.includes(cocktail_recipe_parts: %i[ingredient ingredient_category]).all
   end
 
   # GET /cocktail_recipes/1
@@ -99,7 +101,7 @@ class CocktailRecipesController < ApplicationController # rubocop:disable Style/
       :cost,
       :selling_price,
       :description,
-      cocktail_recipe_parts_attributes: %i(id ingredient_category_id ingredient_id strict amount _destroy)
+      cocktail_recipe_parts_attributes: %i[id ingredient_category_id ingredient_id strict amount _destroy]
     )
   end
 end

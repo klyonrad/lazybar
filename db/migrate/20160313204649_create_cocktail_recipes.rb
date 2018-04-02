@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCocktailRecipes < ActiveRecord::Migration
   def change
     create_table :cocktail_recipes do |t|

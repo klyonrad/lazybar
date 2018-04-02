@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Class for Admin Users
 # They are supposed to be allowed to edit anything
 class Admin < ApplicationRecord

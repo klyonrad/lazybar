@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -41,5 +43,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # https://github.com/charliesome/better_errors/wiki#opening-files-in-rubymine
-  BetterErrors.editor='x-mine://open?file=%{file}&line=%{line}' if defined?(BetterErrors)
+  BetterErrors.editor = 'x-mine://open?file=%{file}&line=%{line}' if defined?(BetterErrors)
 end

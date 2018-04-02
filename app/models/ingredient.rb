@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ingredients from which the cocktails are made
 class Ingredient < ActiveRecord::Base
   alias_attribute :category, :ingredient_category

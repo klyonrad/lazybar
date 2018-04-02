@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper # rubocop:disable Style/Documentation
   # detect either admin oder user sign in
   def signed_in?

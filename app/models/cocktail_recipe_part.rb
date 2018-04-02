@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This model represents an individual part of a Cocktail Recipe
 #   - cocktail_recipe_id
 #   - ingredient_category_id
