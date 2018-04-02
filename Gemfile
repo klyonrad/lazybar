@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.2'
+gem 'rails', '~> 5.1.6'
 
 ### backend
 gem 'devise', '~> 4.4.3'
