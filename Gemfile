@@ -41,6 +41,10 @@ group :development do
   gem 'web-console' # Access an IRB console on exception pages or by using <%= console %> in views
 end
 
+group :test do
+  gem 'simplecov', '~> 0.16'
+end
+
 ### analysis
 gem 'sentry-raven', '~> 2.5' # sentry for error logging
 
