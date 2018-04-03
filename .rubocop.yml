@@ -9,6 +9,7 @@ AllCops:
 
 Style/Documentation:
   Exclude:
+    - 'app/controllers/**/*'
     - 'spec/**/*'
     - 'db/migrate/**/*'
 

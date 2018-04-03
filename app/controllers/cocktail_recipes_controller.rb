@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CocktailRecipesController < ApplicationController # rubocop:disable Style/Documentation
+class CocktailRecipesController < ApplicationController
   before_action :set_cocktail_recipe, only: %i[show edit update destroy like unlike]
   before_action :authenticate_admin!, only: %i[create edit update destroy]
 

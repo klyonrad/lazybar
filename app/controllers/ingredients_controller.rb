@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class IngredientsController < ApplicationController # rubocop:disable Style/Documentation
+class IngredientsController < ApplicationController
   before_action :set_ingredient, only: %i[show]
 
   # GET /ingredients

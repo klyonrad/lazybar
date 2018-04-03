@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   root to: 'cocktail_recipes#index'
   resources :ingredients, only: %i[index show]
-  resources :ingredient_categories
+  resources :ingredient_categories, only: %i[index show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
