@@ -28,7 +28,7 @@ gem 'sdoc', '~> 1.0.0', group: :doc # bundle exec rake doc:rails generates the A
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'factory_bot_rails', '~> 4.8.2'
+  gem 'factory_bot_rails', '~> 4.10.0'
   gem 'faker'
   gem 'pry-rails'
   gem 'rails-controller-testing'
