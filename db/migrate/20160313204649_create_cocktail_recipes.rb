@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateCocktailRecipes < ActiveRecord::Migration
+class CreateCocktailRecipes < ActiveRecord::Migration[4.2]
   def change
     create_table :cocktail_recipes do |t|
       t.string :name

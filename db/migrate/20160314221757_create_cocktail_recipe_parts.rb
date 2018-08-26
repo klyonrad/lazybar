@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateCocktailRecipeParts < ActiveRecord::Migration
+class CreateCocktailRecipeParts < ActiveRecord::Migration[4.2]
   def change
     create_table :cocktail_recipe_parts do |t|
       t.references :cocktail_recipe, index: true, foreign_key: true, null: false

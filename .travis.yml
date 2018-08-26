@@ -3,19 +3,24 @@ addons:
 language: ruby
 dist: trusty
 rvm:
-  - 2.4.0
   - 2.4.3
   - 2.4.4
   - 2.5.1
   - 2.6.0-preview2
+install:
+  - bundle install --without development
+  - nvm install node
+  - node -v
+  - npm i -g yarn
+  - yarn
 env:
   - DB=postgresql
-  - DB=sqlite
-# bundler_args: --without capistrano doc production --jobs 2
+#  - DB=sqlite
 before_script:
   - cp config/database.yml.travis config/database.yml
   - sh -c "if [ '$DB' = 'postgresql' ]; then psql -c 'create database lazybar_ci_test' -U postgres; fi"
 script:
-  - RAILS_ENV=test bundle exec rails db:schema:load --trace
-  - bundle exec rails db:test:prepare
+#  - RAILS_ENV=test bundle exec rails db:schema:load --trace
+#  - bundle exec rails db:test:prepare
+  - bundle exec rails db:migrate
   - bundle exec rspec
