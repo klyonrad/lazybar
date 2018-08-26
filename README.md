@@ -6,6 +6,7 @@ The cost and price are calculated.
 
 The application is in a experimental state.
 
+[![Test Status](https://travis-ci.org/klyonrad/lazybar.svg?branch=master)](https://travis-ci.org/klyonrad/lazybar)
 [![Depfu](https://badges.depfu.com/badges/205871c3a207f4dd3180949e18d5de86/overview.svg)](https://depfu.com/github/klyonrad/lazybar)
 [![Ebert](https://ebertapp.io/github/klyonrad/lazybar.svg)](https://ebertapp.io/github/klyonrad/lazybar)
 
