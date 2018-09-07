@@ -10,13 +10,13 @@ jquery-mousewheel@~3.1.13:
   version "3.1.13"
   resolved "https://registry.yarnpkg.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
 
-select2@~4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/select2/-/select2-4.0.3.tgz#207733fe91eacb9cb1a13f12463401f472449e0f"
+select2@~4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/select2/-/select2-4.0.5.tgz#7aac50692561985b34d3b82ec55e226f8960d40a"
   dependencies:
     almond "~0.3.1"
     jquery-mousewheel "~3.1.13"
 
-uikit@~3.0.0-beta.35:
-  version "3.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.0.0-beta.35.tgz#c33b08c139f0c2a1f4c35dfb30c7ff987e48c371"
+uikit@~3.0.0-rc.14:
+  version "3.0.0-rc.14"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.0.0-rc.14.tgz#13c09f956d44b4a4837b0ea5578b1e8867a48e61"

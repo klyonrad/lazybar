@@ -2,9 +2,10 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.2.1'
 
 ### backend
+gem 'bootsnap'
 gem 'devise', '~> 4.5.0'
 gem 'jbuilder', '~> 2.7' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'pg', '~> 1.1.3'
@@ -36,6 +37,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'listen'
   gem 'spring'
 end
 
