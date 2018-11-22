@@ -43,7 +43,7 @@ RSpec.describe 'Sessions' do
     it 'is allowed for admins' do
       sign_in admin
       get rails_admin_path
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end

@@ -26,22 +26,22 @@ gem 'simple_form', '~> 4.0.1'
 gem 'sdoc', '~> 1.0.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 
 group :development, :test do
-  gem 'factory_bot_rails', '~> 4.11.0'
-  gem 'faker'
   gem 'pry-rails'
-  gem 'rspec-rails'
-  gem 'rubocop', '~> 0.58.2'
 end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'listen'
+  gem 'rubocop', '~> 0.58.2'
   gem 'spring'
 end
 
 group :test do
-  gem 'rspec-dom-testing'
+  gem 'factory_bot_rails', '~> 4.11.0'
+  gem 'faker'
+  gem 'rails-dom-testing'
+  gem 'rspec-rails'
   gem 'simplecov', '~> 0.16'
 end
 

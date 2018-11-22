@@ -18,7 +18,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
 
         it 'does not shows link to new form' do
           expect(response).to be_successful
-          expect(response.body).to have_tag("a[href=\"#{new_cocktail_recipe_path}\"]", count: 0)
+          assert_select("a[href=\"#{new_cocktail_recipe_path}\"]", count: 0)
         end
       end
 
@@ -39,12 +39,12 @@ RSpec.describe 'CocktailRecipes', type: :request do
 
         it 'does not show EDIT button for any existing recipe' do
           expect(response).to be_successful
-          expect(response.body).to have_tag("a[href=\"#{edit_cocktail_recipe_path(cocktail_recipe)}\"]", count: 0)
+          assert_select("a[href=\"#{edit_cocktail_recipe_path(cocktail_recipe)}\"]", count: 0)
         end
 
         it 'does not show DELETE button for any existing recipe' do
           expect(response).to be_successful
-          expect(response.body).to have_tag(
+          assert_select(
             "a[href=\"#{cocktail_recipe_path(cocktail_recipe)}\"]" + '[data-method="delete"]',
             count: 0, text: 'Destroy'
           )
@@ -62,7 +62,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
       it 'shows link to new form' do
         get cocktail_recipes_path
         expect(response).to be_successful
-        expect(response.body).to have_tag("a[href=\"#{new_cocktail_recipe_path}\"]", count: 1)
+        assert_select("a[href=\"#{new_cocktail_recipe_path}\"]", count: 1)
       end
 
       context 'with one cocktail recipe' do
@@ -71,12 +71,12 @@ RSpec.describe 'CocktailRecipes', type: :request do
 
         it 'shows EDIT button for any existing recipe' do
           expect(response).to be_successful
-          expect(response.body).to have_tag("a[href=\"#{edit_cocktail_recipe_path(cocktail_recipe)}\"]", count: 1)
+          assert_select("a[href=\"#{edit_cocktail_recipe_path(cocktail_recipe)}\"]", count: 1)
         end
 
         it 'shows DELETE button for any existing recipe' do
           expect(response).to be_successful
-          expect(response.body).to have_tag(
+          assert_select(
             "a[href=\"#{cocktail_recipe_path(cocktail_recipe)}\"]" + '[data-method="delete"]',
             count: 1, text: 'Destroy'
           )
@@ -91,19 +91,19 @@ RSpec.describe 'CocktailRecipes', type: :request do
 
     it 'successfully shows the CocktailRecipe' do
       expect(response).to be_successful
-      expect(result).to have_tag('h1', text: cocktail_recipe.name)
-      expect(result).to have_tag('td', text: cocktail_recipe.parts.first.ingredient.name)
-      expect(result).to have_tag('td', text: cocktail_recipe.parts.second.ingredient.name)
-      expect(result).to have_tag('.uk-description-list',
-                                 text: ['Cost', '3.06',
-                                        'Selling price', '3.15',
-                                        'Description'].join("\n\n"))
+      assert_select('h1', text: cocktail_recipe.name)
+      assert_select('td', text: cocktail_recipe.parts.first.ingredient.name)
+      assert_select('td', text: cocktail_recipe.parts.second.ingredient.name)
+      assert_select('.uk-description-list',
+                    text: ['Cost', '3.06',
+                           'Selling price', '3.15',
+                           'Description'].join("\n\n"))
     end
 
     context 'without any login (public)' do
       it 'does not show EDIT button for any existing recipe' do
         expect(response).to be_successful
-        expect(response.body).to have_tag("a[href=\"#{edit_cocktail_recipe_path(cocktail_recipe)}\"]", count: 0)
+        assert_select("a[href=\"#{edit_cocktail_recipe_path(cocktail_recipe)}\"]", count: 0)
       end
     end
   end
@@ -115,7 +115,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
       it 'works' do
         get edit_cocktail_recipe_path(cocktail_recipe)
         expect(response).to be_successful
-        expect(response.body).to have_tag('input#cocktail_recipe_name', value: cocktail_recipe.name)
+        assert_select('input#cocktail_recipe_name', value: cocktail_recipe.name)
       end
     end
 
@@ -136,7 +136,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
       it 'works' do
         get new_cocktail_recipe_path
         expect(response).to be_successful
-        expect(response.body).to have_tag('input#cocktail_recipe_name', value: '')
+        assert_select('input#cocktail_recipe_name', value: '')
       end
     end
 

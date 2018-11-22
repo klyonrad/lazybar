@@ -50,5 +50,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via: # config.filter_gems_from_backtrace("gem name")
   config.include RequestSpecHelper, type: :request
-  config.include RSpec::Dom::Testing::Matchers
+  config.include ::Rails::Dom::Testing::Assertions::SelectorAssertions
 end
