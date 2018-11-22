@@ -86,19 +86,66 @@ RSpec.describe 'CocktailRecipes', type: :request do
   end
 
   describe 'GET /show' do
-    context 'without any login (public)' do
-      let(:result) { response.body }
+    before { get cocktail_recipe_path(cocktail_recipe) }
+    let(:result) { response.body }
 
-      it 'successfully shows the CocktailRecipe' do
-        get cocktail_recipe_path(cocktail_recipe)
+    it 'successfully shows the CocktailRecipe' do
+      expect(response).to be_successful
+      expect(result).to have_tag('h1', text: cocktail_recipe.name)
+      expect(result).to have_tag('td', text: cocktail_recipe.parts.first.ingredient.name)
+      expect(result).to have_tag('td', text: cocktail_recipe.parts.second.ingredient.name)
+      expect(result).to have_tag('.uk-description-list',
+                                 text: ['Cost', '3.06',
+                                        'Selling price', '3.15',
+                                        'Description'].join("\n\n"))
+    end
+
+    context 'without any login (public)' do
+      it 'does not show EDIT button for any existing recipe' do
         expect(response).to be_successful
-        expect(result).to have_tag('h1', text: cocktail_recipe.name)
-        expect(result).to have_tag('td', text: cocktail_recipe.parts.first.ingredient.name)
-        expect(result).to have_tag('td', text: cocktail_recipe.parts.second.ingredient.name)
-        expect(result).to have_tag('.uk-description-list',
-                                   text: ['Cost', '3.06',
-                                          'Selling price', '3.15',
-                                          'Description'].join("\n\n"))
+        expect(response.body).to have_tag("a[href=\"#{edit_cocktail_recipe_path(cocktail_recipe)}\"]", count: 0)
+      end
+    end
+  end
+
+  describe 'GET /edit' do
+    context 'with admin login' do
+      before { sign_in admin }
+
+      it 'works' do
+        get edit_cocktail_recipe_path(cocktail_recipe)
+        expect(response).to be_successful
+        expect(response.body).to have_tag('input#cocktail_recipe_name', value: cocktail_recipe.name)
+      end
+    end
+
+    context 'without any login(public)' do
+      it 'does not work' do
+        get edit_cocktail_recipe_path(cocktail_recipe)
+        expect(response).to redirect_to(new_admin_session_path)
+        follow_redirect!
+        expect(response).to be_successful
+      end
+    end
+  end
+
+  describe 'GET /new' do
+    context 'with admin login' do
+      before { sign_in admin }
+
+      it 'works' do
+        get new_cocktail_recipe_path
+        expect(response).to be_successful
+        expect(response.body).to have_tag('input#cocktail_recipe_name', value: '')
+      end
+    end
+
+    context 'without any login(public)' do
+      it 'does not work' do
+        get new_cocktail_recipe_path
+        expect(response).to redirect_to(new_admin_session_path)
+        follow_redirect!
+        expect(response).to be_successful
       end
     end
   end

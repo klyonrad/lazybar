@@ -2,7 +2,7 @@
 
 class CocktailRecipesController < ApplicationController
   before_action :set_cocktail_recipe, only: %i[show edit update destroy like unlike]
-  before_action :authenticate_admin!, only: %i[create edit update destroy]
+  before_action :authenticate_admin!, only: %i[new create edit update destroy]
 
   # GET /cocktail_recipes
   # GET /cocktail_recipes.json
