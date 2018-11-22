@@ -2,13 +2,13 @@
 
 FactoryBot.define do
   factory :admin do
-    email 'test@example.com'
-    password 'battery horse staple'
+    email { 'test@example.com' }
+    password { 'battery horse staple' }
   end
 
   factory :user do
     sequence(:email) { |n| "test#{n}@example.com" }
-    password 'battery horse staple'
+    password { 'battery horse staple' }
   end
 
   factory :ingredient_category do
@@ -18,11 +18,11 @@ FactoryBot.define do
   factory :ingredient do
     sequence(:name) { |n| "Hipster Gin #{n}" }
     association :ingredient_category
-    price_per_cl 0.255
+    price_per_cl { 0.255 }
   end
 
   factory :cocktail_recipe_part do
-    amount 60
+    amount { 60 }
 
     before(:create) do |recipe_part, _|
       ingredient = create :ingredient
@@ -35,7 +35,7 @@ FactoryBot.define do
   factory :cocktail_recipe do
     sequence(:name) { |n| "Super Mix #{n}" }
     transient do
-      recipe_parts_count 2 # size of the cocktail recipe
+      recipe_parts_count { 2 } # size of the cocktail recipe
     end
 
     # build recipe with it's parts. Only using build is not necessary,

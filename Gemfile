@@ -29,7 +29,6 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.11.0'
   gem 'faker'
   gem 'pry-rails'
-  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'rubocop', '~> 0.58.2'
 end
@@ -42,6 +41,7 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-dom-testing'
   gem 'simplecov', '~> 0.16'
 end
 
