@@ -18,6 +18,7 @@ class CocktailRecipePart < ActiveRecord::Base
 
   def ingredient_needs_to_match_category
     return if ingredient&.ingredient_category == ingredient_category
+
     errors.add(:ingredient, "Default Ingredient is not category #{ingredient_category&.name}")
   end
 end

@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # https://github.com/charliesome/better_errors/wiki#opening-files-in-rubymine
-  BetterErrors.editor = 'x-mine://open?file=%{file}&line=%{line}' if defined?(BetterErrors)
+  # BetterErrors.editor = 'x-mine://open?file=%{file}&line=%{line}' if defined?(BetterErrors)
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
