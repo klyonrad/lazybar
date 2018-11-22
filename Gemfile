@@ -28,7 +28,7 @@ gem 'sdoc', '~> 1.0.0', group: :doc # bundle exec rake doc:rails generates the A
 group :development, :test do
   gem 'faker'
   gem 'pry-rails'
-  gem 'rubocop', '~> 0.58.2'
+  gem 'rubocop', '~> 0.60.0'
 end
 
 group :development do
