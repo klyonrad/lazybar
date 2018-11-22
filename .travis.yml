@@ -5,7 +5,7 @@ dist: trusty
 rvm:
   - 2.4.5
   - 2.5.3
-  - 2.6.0-preview3
+#  - 2.6.0-preview3
 install:
   - bundle install --without development
   - nvm install node
