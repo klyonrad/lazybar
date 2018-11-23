@@ -33,7 +33,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'listen'
-  gem 'rubocop', '~> 0.58.2'
+  gem 'rubocop'
   gem 'spring'
 end
 
