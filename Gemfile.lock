@@ -267,7 +267,7 @@ GEM
     sentry-raven (2.7.4)
       faraday (>= 0.7.6, < 1.0)
     sexp_processor (4.11.0)
-    simple_form (4.0.1)
+    simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.16.1)
@@ -330,7 +330,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 1.0.0)
   sentry-raven (~> 2.5)
-  simple_form (~> 4.0.1)
+  simple_form (~> 4.1.0)
   simplecov (~> 0.16)
   spring
   turbolinks
