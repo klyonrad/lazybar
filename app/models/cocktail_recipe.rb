@@ -12,12 +12,12 @@ end
 # name
 # cocktail_recipe_parts
 class CocktailRecipe < ApplicationRecord
-  ## cocktail_recipe_parts association
+  PROFIT_MARGIN = 1.03
+
   alias_attribute :parts, :cocktail_recipe_parts
   has_many :cocktail_recipe_parts, dependent: :destroy
   accepts_nested_attributes_for :cocktail_recipe_parts, reject_if: :all_blank, allow_destroy: true
 
-  ## associations
   has_many :user_cocktail_likes, dependent: :destroy
   has_many :users, through: :user_cocktail_likes
 
@@ -37,19 +37,12 @@ class CocktailRecipe < ApplicationRecord
       .order('vote_count DESC')
   }
 
-  ## methods
-
   def cost
-    sum = 0
-    cocktail_recipe_parts.each do |part|
-      sum += (part.ingredient.price_per_cl / 10) * part.amount
-    end
-    sprintf('%.3g', sum).to_f # rubocop:disable Style/FormatString
+    cocktail_recipe_parts.sum(&:cost).round(2)
   end
 
-  # Increase cost by a profit margin
   def selling_price
-    sprintf('%.3g', cost * 1.03).to_f # rubocop:disable Style/FormatString
+    (cost * PROFIT_MARGIN).round(1)
   end
 
   def likes

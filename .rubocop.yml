@@ -1,3 +1,5 @@
+require: rubocop-rspec
+
 AllCops:
   Exclude:
     - 'bin/**/*'
@@ -37,3 +39,12 @@ Metrics/BlockLength:
     - 'spec/factories.rb'
     - 'spec/models/**/*'
     - 'spec/requests/**/*'
+
+RSpec/ExampleLength:
+  Max: 8
+
+RSpec/MultipleExpectations:
+  Max: 3
+
+RSpec/NestedGroups:
+  Max: 8

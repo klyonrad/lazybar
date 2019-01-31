@@ -14,6 +14,10 @@ class CocktailRecipePart < ApplicationRecord
   validates :amount, numericality: { greater_than: 0 }, presence: true
   validate :ingredient_needs_to_match_category
 
+  def cost
+    ingredient.price_per_cl / 10 * amount
+  end
+
   private
 
   def ingredient_needs_to_match_category

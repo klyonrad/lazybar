@@ -35,6 +35,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'listen'
   gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'spring'
 end
 
@@ -42,6 +43,7 @@ group :test do
   gem 'factory_bot_rails', '~> 4.11.0'
   gem 'faker'
   gem 'rails-dom-testing'
+  gem 'rspec-collection_matchers'
   gem 'rspec-rails'
   gem 'simplecov', '~> 0.16'
 end

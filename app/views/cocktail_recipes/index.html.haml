@@ -8,7 +8,7 @@
           = cocktail_recipe.name
       %dl.equal-height.uk-description-list.uk-description-list-divider
         %dt Price
-        %dd= cocktail_recipe.selling_price
+        %dd= number_to_currency cocktail_recipe.selling_price, unit: '€'
         - if cocktail_recipe.cocktail_recipe_parts
           %dt Ingredients
           %dd

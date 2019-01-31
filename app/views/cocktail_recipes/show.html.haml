@@ -31,7 +31,7 @@
         = @cocktail_recipe.cost
       %dt Selling price
       %dd
-        = @cocktail_recipe.selling_price
+        = number_to_currency @cocktail_recipe.selling_price, unit: '€'
       %dt Description
       %dd.uk-text-break
         = @cocktail_recipe.description

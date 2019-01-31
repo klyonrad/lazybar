@@ -13,7 +13,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
         before { get cocktail_recipes_path }
 
         it 'works' do
-          expect(response).to have_http_status(200)
+          expect(response).to have_http_status(:ok)
         end
 
         it 'does not shows link to new form' do
@@ -24,6 +24,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
 
       context 'with one CocktailRecipe' do
         let!(:cocktail_recipe) { create :cocktail_recipe }
+
         before { get cocktail_recipes_path }
 
         it 'works and shows CocktailRecipe' do
@@ -67,6 +68,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
 
       context 'with one cocktail recipe' do
         let!(:cocktail_recipe) { create :cocktail_recipe }
+
         before { get cocktail_recipes_path }
 
         it 'shows EDIT button for any existing recipe' do
@@ -87,6 +89,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
 
   describe 'GET /show' do
     before { get cocktail_recipe_path(cocktail_recipe) }
+
     let(:result) { response.body }
 
     it 'successfully shows the CocktailRecipe' do
@@ -96,7 +99,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
       assert_select('td', text: cocktail_recipe.parts.second.ingredient.name)
       assert_select('.uk-description-list',
                     text: ['Cost', '3.06',
-                           'Selling price', '3.15',
+                           'Selling price', '€3.20',
                            'Description'].join("\n\n"))
     end
 
