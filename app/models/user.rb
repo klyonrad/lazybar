@@ -16,7 +16,7 @@ class User < ApplicationRecord
   end
 
   def unlike_cocktail(cocktail)
-    cocktail_likes.where(cocktail_recipe: cocktail).first.destroy
+    cocktail_likes.find_by(cocktail_recipe: cocktail).destroy
   end
 
   def likes_cocktail?(cocktail)

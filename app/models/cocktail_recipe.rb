@@ -11,7 +11,7 @@ end
 # This Model represents a Cocktail Recipe
 # name
 # cocktail_recipe_parts
-class CocktailRecipe < ActiveRecord::Base
+class CocktailRecipe < ApplicationRecord
   ## cocktail_recipe_parts association
   alias_attribute :parts, :cocktail_recipe_parts
   has_many :cocktail_recipe_parts, dependent: :destroy

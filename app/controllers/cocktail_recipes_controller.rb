@@ -69,8 +69,8 @@ class CocktailRecipesController < ApplicationController
         format.html { redirect_to @cocktail_recipe, notice: 'Liked that cocktail!' }
         format.json { render :show, status: :ok, location: @cocktail_recipe }
       else
-        format.html { render :show, status: 500, notice: 'went wrong' }
-        format.json { render json: @cocktail_recipe.errors, status: 500 }
+        format.html { render :show, status: :internal_server_error, notice: 'went wrong' }
+        format.json { render json: @cocktail_recipe.errors, status: :internal_server_error }
       end
     end
   end
@@ -81,8 +81,8 @@ class CocktailRecipesController < ApplicationController
         format.html { redirect_to @cocktail_recipe, notice: 'Liked that cocktail!' }
         format.json { render :show, status: :ok, location: @cocktail_recipe }
       else
-        format.html { render :show, status: 500, notice: 'went wrong' }
-        format.json { render json: @cocktail_recipe.errors, status: 500 }
+        format.html { render :show, status: :internal_server_error, notice: 'went wrong' }
+        format.json { render json: @cocktail_recipe.errors, status: :internal_server_error }
       end
     end
   end

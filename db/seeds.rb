@@ -35,7 +35,7 @@ IngredientCategory.create([
                           ])
 
 def category(name)
-  IngredientCategory.find_by_name name
+  IngredientCategory.find_by name: name
 end
 
 Ingredient.create!([
@@ -101,7 +101,7 @@ Ingredient.create!([
                    ])
 
 def ingredient(name)
-  Ingredient.find_by_name(name)
+  Ingredient.find_by(name: name)
 end
 
 CocktailRecipe.create([

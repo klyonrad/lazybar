@@ -7,6 +7,12 @@ AllCops:
     - 'spec/views/**/*'
 #    - !ruby/regexp /old_and_unused\.rb$/
 
+Rails:
+  Enabled: true
+
+Rails/BulkChangeTable:
+  Enabled: false
+
 Style/Documentation:
   Exclude:
     - 'app/controllers/**/*'
