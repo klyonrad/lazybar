@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+ruby '2.5.3'
 
 gem 'rails', '~> 5.2.1'
 
@@ -52,4 +53,3 @@ gem 'sentry-raven', '~> 2.5'
 gem 'rails_12factor', group: :production # For Deployment to heroku
 
 gem 'rake'
-# ruby '2.4.3'
