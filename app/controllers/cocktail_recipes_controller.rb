@@ -89,17 +89,13 @@ class CocktailRecipesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_cocktail_recipe
     @cocktail_recipe = CocktailRecipe.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def cocktail_recipe_params
     params.require(:cocktail_recipe).permit(
       :name,
-      :cost,
-      :selling_price,
       :description,
       cocktail_recipe_parts_attributes: %i[id ingredient_category_id ingredient_id strict amount _destroy]
     )

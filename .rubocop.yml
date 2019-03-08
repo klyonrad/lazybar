@@ -41,6 +41,7 @@ Metrics/BlockLength:
     - 'spec/requests/**/*'
 
 RSpec/ExampleLength:
+  Enabled: false
   Max: 8
 
 RSpec/MultipleExpectations:

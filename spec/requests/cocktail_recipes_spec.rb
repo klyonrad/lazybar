@@ -152,4 +152,45 @@ RSpec.describe 'CocktailRecipes', type: :request do
       end
     end
   end
+
+  describe 'POST /create' do
+    let(:first_ingredient) { create :ingredient }
+    let(:second_ingredient) { create :ingredient }
+    let(:first_part_params) do
+      {
+        ingredient_category_id: first_ingredient.category.id,
+        ingredient_id: first_ingredient.id,
+        amount: '20'
+      }
+    end
+    let(:second_part_params) do
+      {
+        ingredient_category_id: second_ingredient.category.id,
+        ingredient_id: second_ingredient.id,
+        amount: '15'
+      }
+    end
+    let :valid_params do
+      { cocktail_recipe: { name: 'foo',
+                           cocktail_recipe_parts_attributes: {
+                             '0': first_part_params,
+                             '1': second_part_params
+                           } } }
+    end
+    let(:last_cocktail) { CocktailRecipe.last }
+
+    context 'with admin login' do
+      before { sign_in admin }
+
+      it 'saves the recipe in database upon receiving correct parameters' do
+        post cocktail_recipes_path, params: valid_params
+
+        expect(CocktailRecipe.all).not_to be_empty
+        expect(last_cocktail.name).to eq('foo')
+        expect(last_cocktail.parts).to have(2).items
+        expect(response).to redirect_to(cocktail_recipe_path(last_cocktail))
+        follow_redirect!
+      end
+    end
+  end
 end
