@@ -7,7 +7,8 @@ class CollectionLengthValidator < ActiveModel::Validations::LengthValidator
     super(record, attribute, value)
   end
 end
-
+puts 'IS LOADED'
+raise 'Why am I getting raised?'
 # This Model represents a Cocktail Recipe
 # name
 # cocktail_recipe_parts
