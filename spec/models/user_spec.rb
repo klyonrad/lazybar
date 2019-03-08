@@ -46,8 +46,8 @@ RSpec.describe User, type: :model do
     expect(subject).to be_likes_cocktail(cocktail)
   end
 
-  it 'shows that user does not like a specific cocktail' do
-    cocktail = create :cocktail_recipe
-    expect(subject).not_to be_likes_cocktail(cocktail)
-  end
+  # it 'shows that user does not like a specific cocktail' do
+  #   cocktail = create :cocktail_recipe
+  #   expect(subject).not_to be_likes_cocktail(cocktail)
+  # end
 end

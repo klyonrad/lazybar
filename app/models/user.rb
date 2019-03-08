@@ -20,6 +20,8 @@ class User < ApplicationRecord
   end
 
   def likes_cocktail?(cocktail)
+    return if cocktail_likes.empty?
+
     cocktail_likes.any? { |like| like.cocktail_recipe == cocktail }
   end
 end
