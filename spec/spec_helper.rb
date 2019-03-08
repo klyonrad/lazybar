@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  use_branchable_report true
+end
 
 require 'rspec/collection_matchers'
 require 'faker'

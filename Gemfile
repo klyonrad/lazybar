@@ -45,7 +45,8 @@ group :test do
   gem 'rails-dom-testing'
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
-  gem 'simplecov', '~> 0.16'
+  gem 'simplecov', git: 'https://github.com/som4ik/simplecov.git', branch: 'feature/branches-coverage-support'
+  gem 'simplecov-html', git: 'https://github.com/som4ik/simplecov-html.git', branch: 'feature/branches-coverage-support'
 end
 
 ### analysis
