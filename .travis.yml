@@ -3,8 +3,7 @@ addons:
 language: ruby
 dist: trusty
 rvm:
-  - 2.5.3
-#  - 2.6.1
+  - 2.6.3
 install:
   - bundle install --without development
   - nvm install node
