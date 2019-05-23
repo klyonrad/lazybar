@@ -2,22 +2,20 @@
 
 require 'rails_helper'
 
-RSpec.describe UserCocktailLike, type: :model do
-  subject do
-    create(:user_cocktail_like)
-  end
+RSpec.describe UserCocktailLike do
+  subject(:cocktail_like_entry) { create :user_cocktail_like }
 
   it 'is valid with valid content' do
-    expect(subject).to be_valid
+    expect(cocktail_like_entry).to be_valid
   end
 
   it 'gets deleted when cocktail is deleted' do
-    subject.cocktail_recipe.destroy
+    cocktail_like_entry.cocktail_recipe.destroy
     expect(UserCocktailLike.all).to be_empty
   end
 
   it 'gets deleted when user is deleted' do
-    subject.user.destroy
+    cocktail_like_entry.user.destroy
     expect(UserCocktailLike.all).to be_empty
   end
 end

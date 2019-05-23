@@ -2,52 +2,60 @@
 
 require 'rails_helper'
 
-RSpec.describe Ingredient, type: :model do
-  subject do
-    build(:ingredient)
-  end
+RSpec.describe Ingredient do
+  subject(:ingredient) { build(:ingredient) }
 
-  it 'is valid with valid attributes' do
-    expect(subject).to be_valid
+  context 'with valid attributes' do
+    subject { build_stubbed :ingredient }
+
+    it { is_expected.to be_valid }
   end
 
   describe 'presence validations' do
-    it 'is not valid without a name' do
-      subject.name = nil
-      expect(subject).not_to be_valid
+    context 'without a name' do
+      subject { build_stubbed :ingredient, name: nil }
+
+      it { is_expected.not_to be_valid }
     end
 
-    it 'is not valid without a category' do
-      subject.ingredient_category = nil
-      expect(subject).not_to be_valid
+    context 'without a category' do
+      subject { build_stubbed :ingredient, ingredient_category: nil }
+
+      it { is_expected.not_to be_valid }
     end
 
-    it 'is not valid without a price' do
-      subject.price_per_cl = nil
-      expect(subject).not_to be_valid
-    end
+    context 'without a price' do
+      subject { build_stubbed :ingredient, price_per_cl: nil }
 
-    it 'is not valid with negative price' do
-      subject.price_per_cl = -0.30
-      expect(subject).not_to be_valid
-    end
-
-    it 'is valid with price of zero' do
-      subject.price_per_cl = 0
-      expect(subject).to be_valid
+      it { is_expected.not_to be_valid }
     end
   end
 
   describe 'other validations' do
+    describe 'price validations' do
+      context 'with negative price' do
+        subject { build_stubbed :ingredient, price_per_cl: -0.01 }
+
+        it { is_expected.not_to be_valid }
+      end
+
+      context 'with price of zero' do
+        subject { build_stubbed :ingredient, price_per_cl: 0 }
+
+        it { is_expected.to be_valid }
+      end
+    end
+
     it 'is valid with different names' do
-      subject.save
+      ingredient.save
       ingredients = build_list(:ingredient, 3)
-      ingredients.each { |ingr| expect(ingr).to be_valid }
+
+      expect(ingredients).to all(be_valid)
     end
 
     it 'is not valid with same name' do
-      subject.name = 'Hipster Gin'
-      subject.save
+      ingredient.name = 'Hipster Gin'
+      ingredient.save
       not_unique = build(:ingredient, name: 'Hipster Gin')
       expect(not_unique).not_to be_valid
     end
@@ -55,11 +63,11 @@ RSpec.describe Ingredient, type: :model do
 
   describe 'defaults' do
     it 'is available by default' do
-      expect(subject.available).to be_truthy
+      expect(ingredient.available).to be_truthy
     end
 
     it 'has no comment by default' do
-      expect(subject.comment).to be_nil
+      expect(ingredient.comment).to be_nil
     end
   end
 end

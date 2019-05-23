@@ -2,49 +2,56 @@
 
 require 'rails_helper'
 
-RSpec.describe CocktailRecipePart, type: :model do
-  subject do
-    create(:cocktail_recipe_part)
-  end
+RSpec.describe CocktailRecipePart do
+  subject(:cocktail_recipe_part) { create(:cocktail_recipe_part) }
 
   it 'is valid with valid content' do
-    expect(subject).to be_valid
+    expect(cocktail_recipe_part).to be_valid
   end
 
   describe 'validations' do
-    it 'is not valid without recipe association' do
-      subject.cocktail_recipe = nil
-      expect(subject).not_to be_valid
+    context 'without recipe association' do
+      before { cocktail_recipe_part.cocktail_recipe = nil }
+
+      it { is_expected.not_to be_valid }
     end
 
-    it 'is not valid without a ingredient_category' do
-      subject.ingredient_category = nil
-      expect(subject).not_to be_valid
+    context 'without a ingredient_category' do
+      before { cocktail_recipe_part.ingredient_category = nil }
+
+      it { is_expected.not_to be_valid }
     end
 
-    it 'is not valid without an ingredient' do
-      subject.ingredient = nil
-      expect(subject).not_to be_valid
+    context 'without an ingredient' do
+      before { cocktail_recipe_part.ingredient = nil }
+
+      it { is_expected.not_to be_valid }
     end
 
-    it 'is not valid without an amount' do
-      subject.amount = nil
-      expect(subject).not_to be_valid
+    context 'without an amount' do
+      before { cocktail_recipe_part.amount = nil }
+
+      it { is_expected.not_to be_valid }
     end
 
-    it 'is not valid with negative amount' do
-      subject.amount = -30
-      expect(subject).not_to be_valid
+    context 'with negative amount' do
+      before { cocktail_recipe_part.amount = -30 }
+
+      it { is_expected.not_to be_valid }
     end
 
-    it 'is not valid with zero amount' do
-      subject.amount = 0
-      expect(subject).not_to be_valid
+    context 'with zero amount' do
+      before { cocktail_recipe_part.amount = 0 }
+
+      it { is_expected.not_to be_valid }
     end
 
-    it 'is not valid when ingredient and category mismatch' do
-      subject.ingredient_category = create :ingredient_category
-      expect(subject).not_to be_valid
+    context 'when ingredient and category mismatch' do
+      before { cocktail_recipe_part.ingredient_category = different_category }
+
+      let(:different_category) { create :ingredient_category }
+
+      it { is_expected.not_to be_valid }
     end
   end
 end
