@@ -11,11 +11,11 @@ RSpec.describe UserCocktailLike do
 
   it 'gets deleted when cocktail is deleted' do
     cocktail_like_entry.cocktail_recipe.destroy
-    expect(UserCocktailLike.all).to be_empty
+    expect(described_class.all).to be_empty
   end
 
   it 'gets deleted when user is deleted' do
     cocktail_like_entry.user.destroy
-    expect(UserCocktailLike.all).to be_empty
+    expect(described_class.all).to be_empty
   end
 end

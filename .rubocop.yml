@@ -1,4 +1,6 @@
-require: rubocop-rspec
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   Exclude:
@@ -8,7 +10,6 @@ AllCops:
     - 'spec/controllers/**/*'
     - 'spec/views/**/*'
 #    - !ruby/regexp /old_and_unused\.rb$/
-
 Rails:
   Enabled: true
 

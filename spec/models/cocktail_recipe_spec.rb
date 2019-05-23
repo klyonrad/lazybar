@@ -90,7 +90,7 @@ RSpec.describe CocktailRecipe do
       end
 
       describe 'listing liked cocktails that are liked' do
-        subject(:liked_cocktails) { CocktailRecipe.liked }
+        subject(:liked_cocktails) { described_class.liked }
 
         it { is_expected.to have(2).items }
         it { is_expected.to include(cocktails[0]) }
@@ -99,7 +99,7 @@ RSpec.describe CocktailRecipe do
       end
 
       describe 'listing liked cocktails, ordered by popularity' do
-        subject(:liked_cocktails) { CocktailRecipe.liked_sorted }
+        subject(:liked_cocktails) { described_class.liked_sorted }
 
         it 'shows cocktail with 3 likes first' do
           expect(liked_cocktails.first).to eq cocktails[1]
