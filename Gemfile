@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.1'
 ### backend
 gem 'bootsnap'
 gem 'devise', '~> 4.6.2'
-gem 'jbuilder', '~> 2.7' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1.3'
 gem 'rails_admin', '~> 1.4.1'
 
@@ -20,11 +20,9 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 ### Frontend stuff
-gem 'cocoon', '~> 1.2' # Use cocoon for nested forms
+gem 'cocoon', '~> 1.2'
 gem 'haml-rails', '~> 2.0'
 gem 'simple_form', '~> 4.1.0'
-
-gem 'sdoc', '~> 1.0.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 
 group :development, :test do
   gem 'pry-rails'
