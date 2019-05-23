@@ -66,6 +66,15 @@ RSpec.describe CocktailRecipe do
     end
   end
 
+  describe '#alternatives' do
+    context 'with one unstrict and one strict part' do
+      subject(:cocktail_recipe) do
+        firt_part = build_stubbed :cocktail_recipe_part, strict: false
+        second_part = build_stubbed :cocktail_recipe_part, strict: true
+      end
+    end
+  end
+
   describe 'methods about liking' do
     it 'can show the users that like it' do
       users = create_pair(:user)

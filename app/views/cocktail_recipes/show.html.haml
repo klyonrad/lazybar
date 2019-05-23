@@ -26,15 +26,29 @@
                   = recipe_part.ingredient.name
   .uk-width-xlarge
     %dl.uk-description-list
-      %dt Cost
-      %dd
-        = @cocktail_recipe.cost
       %dt Selling price
       %dd
         = number_to_currency @cocktail_recipe.selling_price, unit: '€'
+      %dt Cost
+      %dd
+        = @cocktail_recipe.cost
       %dt Description
       %dd.uk-text-break
         = @cocktail_recipe.description
+      %dt Alternative Prices
+      %div
+        %table.uk-table.uk-table-responsive.uk-table-divider.uk-table-hover
+          %thead
+            %tr
+              %th.uk-table-shrink Price
+              %th Ingredient
+          %tbody
+            - @cocktail_recipe.alternatives.each do |recipe_alternative|
+              %tr
+                %td
+                  = number_to_currency recipe_alternative.selling_price, unit: '€'
+                %td
+                  = recipe_alternative.cocktail_recipe_parts.reject(&:strict?).first.ingredient.name
 - if user_signed_in?
   - if current_user.likes_cocktail? @cocktail_recipe
     = link_to 'UNLIKE', unlike_cocktail_recipe_path(@cocktail_recipe), method: :put

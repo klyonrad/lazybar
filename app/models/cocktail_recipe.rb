@@ -48,4 +48,30 @@ class CocktailRecipe < ApplicationRecord
   def likes
     user_cocktail_likes.count
   end
+
+  def alternatives
+    part_to_change = cocktail_recipe_parts.reject(&:strict?).first
+    category = part_to_change.ingredient_category
+
+    alternative_ingredients_for_unstrict = category.ingredients.reject do |ingredient_possibility|
+      ingredient_possibility == part_to_change.ingredient
+    end
+    return none if alternative_ingredients_for_unstrict.empty?
+
+    array = []
+    alternative_ingredients_for_unstrict.each do |alternative_ingredient|
+      in_memory_recipe = deep_clone
+      in_memory_recipe.cocktail_recipe_parts.reject(&:strict?).first.ingredient = alternative_ingredient
+      array << in_memory_recipe
+    end
+    array
+  end
+
+  private
+
+  def deep_clone
+    duplicate = dup
+    duplicate.parts = parts.map(&:dup)
+    duplicate
+  end
 end
