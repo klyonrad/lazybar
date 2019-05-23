@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe CocktailRecipe, type: :model do
+RSpec.describe CocktailRecipe do
   subject(:cocktail_recipe) { create :cocktail_recipe }
 
   describe 'validations' do
@@ -50,11 +50,11 @@ RSpec.describe CocktailRecipe, type: :model do
     end
 
     it 'gives the correct selling price, nicely rounded down' do
-      subject.parts.each do |part|
+      cocktail_recipe.parts.each do |part|
         part.ingredient.price_per_cl = 0.35
         part.amount = 50
       end
-      expect(subject.selling_price).to eq 3.60 # cost is 3,5, selling price is 3,605
+      expect(cocktail_recipe.selling_price).to eq 3.60 # cost is 3,5, selling price is 3,605
     end
 
     it 'gives the correct selling price, nicely rounded up' do
@@ -69,7 +69,7 @@ RSpec.describe CocktailRecipe, type: :model do
   describe 'methods about liking' do
     it 'can show the users that like it' do
       users = create_pair(:user)
-      users.each { |usr| usr.like_cocktail(subject) }
+      users.each { |usr| usr.like_cocktail(cocktail_recipe) }
       cocktail_recipe.liking_users.each_with_index { |liking_user, i| expect(liking_user).to eq users[i] }
     end
 

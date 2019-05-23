@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Sessions' do
+RSpec.describe 'Sessions', type: :request do
   let(:user) { create :user }
   let(:admin) { create :admin }
 
