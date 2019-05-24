@@ -41,7 +41,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails', '~> 4.11.0'
+  gem 'factory_bot_rails', '~> 5.0.2'
   gem 'faker'
   gem 'rails-dom-testing'
   gem 'rspec-collection_matchers'
