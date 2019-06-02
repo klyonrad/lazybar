@@ -49,25 +49,18 @@ class CocktailRecipe < ApplicationRecord
     user_cocktail_likes.count
   end
 
+  # @return [Array] Collection of (unpersisted) CocktailRecipe objects
   def alternatives
-    part_to_change = cocktail_recipe_parts.reject(&:strict?).first
-    category = part_to_change.ingredient_category
+    return CocktailRecipe.none if very_strict?
 
-    alternative_ingredients_for_unstrict = category.ingredients.reject do |ingredient_possibility|
-      ingredient_possibility == part_to_change.ingredient
-    end
-    return none if alternative_ingredients_for_unstrict.empty?
-
-    array = []
-    alternative_ingredients_for_unstrict.each do |alternative_ingredient|
-      in_memory_recipe = deep_clone
-      in_memory_recipe.cocktail_recipe_parts.reject(&:strict?).first.ingredient = alternative_ingredient
-      array << in_memory_recipe
-    end
-    array
+    VariantsCalculator.new(parts).cocktail_combinations
   end
 
   private
+
+  def very_strict?
+    parts.all?(&:strict?)
+  end
 
   def deep_clone
     duplicate = dup
