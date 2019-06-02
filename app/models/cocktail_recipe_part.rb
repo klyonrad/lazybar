@@ -18,6 +18,12 @@ class CocktailRecipePart < ApplicationRecord
     ingredient.price_per_cl / 10 * amount
   end
 
+  def ingredient_alternatives
+    return Array.new(1, ingredient) if strict?
+
+    ingredient_category.ingredients.to_a
+  end
+
   private
 
   def ingredient_needs_to_match_category

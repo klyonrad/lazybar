@@ -43,11 +43,11 @@ class VariantsCalculator
 
   def ingredient_combinations
     arrays = []
-    relevant_categories.each do |category|
-      arrays << category.ingredients.to_a
+    unstrict_recipe_parts.each do |recipe_part|
+      arrays << recipe_part.ingredient_alternatives
     end
-    strict_ingredients.each do |ingredient|
-      arrays << [ingredient]
+    strict_recipe_parts.each do |recipe_part|
+      arrays << recipe_part.ingredient_alternatives
     end
 
     arrays.first.product(*arrays.drop(1))
@@ -65,5 +65,11 @@ class VariantsCalculator
 
   def unstrict_recipe_parts
     cocktail_recipe_parts.reject(&:strict?)
+  end
+
+  private
+
+  def strict_recipe_parts
+    cocktail_recipe_parts.select(&:strict?)
   end
 end
