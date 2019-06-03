@@ -18,10 +18,20 @@ class CocktailRecipePart < ApplicationRecord
     ingredient.price_per_cl / 10 * amount
   end
 
-  def ingredient_alternatives
-    return Array.new(1, ingredient) if strict?
+  def alternatives
+    if strict?
+      return [CocktailRecipePart.new(amount: amount,
+                                     strict: strict,
+                                     ingredient: ingredient,
+                                     ingredient_category: ingredient.category)]
+    end
 
-    ingredient_category.ingredients.to_a
+    ingredient_category.ingredients.map do |possible_ingredient|
+      CocktailRecipePart.new(amount: amount,
+                             strict: strict,
+                             ingredient: possible_ingredient,
+                             ingredient_category: ingredient.category)
+    end
   end
 
   private
