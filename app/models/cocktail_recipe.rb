@@ -53,7 +53,9 @@ class CocktailRecipe < ApplicationRecord
   def alternatives
     return CocktailRecipe.none if very_strict?
 
-    VariantsCalculator.new(parts).cocktail_combinations
+    VariantsCalculator.new(parts).part_combinations.map do |variant|
+      self.class.new(name: variant.map(&:ingredient).map(&:name).join(', '), parts: variant)
+    end
   end
 
   private
