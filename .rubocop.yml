@@ -17,10 +17,7 @@ Rails/BulkChangeTable:
   Enabled: false
 
 Style/Documentation:
-  Exclude:
-    - 'app/controllers/**/*'
-    - 'spec/**/*'
-    - 'db/migrate/**/*'
+  Enabled: false
 
 Metrics/AbcSize:
   Exclude:

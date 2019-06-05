@@ -30,6 +30,10 @@ FactoryBot.define do
       recipe_part.ingredient = ingredient
       recipe_part.ingredient_category = ingredient.category
     end
+
+    trait :strict do
+      strict { true }
+    end
   end
 
   factory :cocktail_recipe do

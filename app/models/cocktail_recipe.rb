@@ -63,10 +63,4 @@ class CocktailRecipe < ApplicationRecord
   def very_strict?
     parts.all?(&:strict?)
   end
-
-  def deep_clone
-    duplicate = dup
-    duplicate.parts = parts.map(&:dup)
-    duplicate
-  end
 end
