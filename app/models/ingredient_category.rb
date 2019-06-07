@@ -5,4 +5,8 @@ class IngredientCategory < ApplicationRecord
   has_many :ingredients, dependent: :restrict_with_exception
 
   validates :name, presence: true, uniqueness: true
+
+  def available_ingredients
+    ingredients.available
+  end
 end

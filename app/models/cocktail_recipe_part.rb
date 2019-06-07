@@ -20,13 +20,11 @@ class CocktailRecipePart < ApplicationRecord
 
   def alternatives
     if strict?
-      return [CocktailRecipePart.new(amount: amount,
-                                     strict: strict,
-                                     ingredient: ingredient,
-                                     ingredient_category: ingredient.category)]
+      readonly!
+      return [self]
     end
 
-    ingredient_category.ingredients.map do |possible_ingredient|
+    ingredient_category.available_ingredients.map do |possible_ingredient|
       CocktailRecipePart.new(amount: amount,
                              strict: strict,
                              ingredient: possible_ingredient,

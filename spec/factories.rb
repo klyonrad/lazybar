@@ -19,16 +19,31 @@ FactoryBot.define do
     sequence(:name) { |n| "Hipster Gin #{n}" }
     association :ingredient_category
     price_per_cl { 0.255 }
+
+    trait :unavailable do
+      available { false }
+    end
   end
 
   factory :cocktail_recipe_part do
     amount { 60 }
+    ingredient { nil }
+    ingredient_category { nil }
 
     before(:create) do |recipe_part, _|
-      ingredient = create :ingredient
-      recipe_part.cocktail_recipe = create(:cocktail_recipe)
-      recipe_part.ingredient = ingredient
-      recipe_part.ingredient_category = ingredient.category
+      if recipe_part.ingredient
+        recipe_part.ingredient_category = recipe_part.ingredient.category
+        recipe_part.cocktail_recipe = create(:cocktail_recipe)
+      else
+        ingredient = create :ingredient
+        recipe_part.cocktail_recipe = create(:cocktail_recipe)
+        recipe_part.ingredient = ingredient
+        recipe_part.ingredient_category = ingredient.category
+      end
+    end
+
+    trait :flexible do
+      strict { false }
     end
 
     trait :strict do
