@@ -1,7 +1,7 @@
 %p#notice= notice
 %h1.uk-heading-primary
   = @cocktail_recipe.name
-.uk-grid
+.uk-grid.uk-grid-divider
   - if @cocktail_recipe.cocktail_recipe_parts
     .uk-width-xlarge
       %h2 Ingredients:
@@ -35,7 +35,19 @@
       %dt Description
       %dd.uk-text-break
         = @cocktail_recipe.description
-  .uk-width-medium
+- if user_signed_in?
+  - if current_user.likes_cocktail? @cocktail_recipe
+    = link_to 'UNLIKE', unlike_cocktail_recipe_path(@cocktail_recipe), method: :put
+  - else
+    = link_to 'LIKE', like_cocktail_recipe_path(@cocktail_recipe), method: :put
+- if admin_signed_in?
+  = link_to 'Edit', edit_cocktail_recipe_path(@cocktail_recipe)
+  |
+  \#{link_to 'Back', cocktail_recipes_path}
+%br
+%br
+.uk-grid
+  .uk-width-xlarge
     %dt Alternative Prices
     %div
       %table.uk-table.uk-table-responsive.uk-table-divider.uk-table-hover
@@ -50,12 +62,3 @@
                 = number_to_currency recipe_alternative.selling_price, unit: '€'
               %td
                 = recipe_alternative.name
-- if user_signed_in?
-  - if current_user.likes_cocktail? @cocktail_recipe
-    = link_to 'UNLIKE', unlike_cocktail_recipe_path(@cocktail_recipe), method: :put
-  - else
-    = link_to 'LIKE', like_cocktail_recipe_path(@cocktail_recipe), method: :put
-- if admin_signed_in?
-  = link_to 'Edit', edit_cocktail_recipe_path(@cocktail_recipe)
-  |
-  \#{link_to 'Back', cocktail_recipes_path}
