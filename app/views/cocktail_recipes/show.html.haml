@@ -18,12 +18,12 @@
                 ml
               %td
                 - if recipe_part.strict
-                  = recipe_part.ingredient.name
+                  = recipe_part.ingredient_name
                 - else
-                  = recipe_part.ingredient_category.name
+                  = recipe_part.category_name
                   ,
                   %strong default:
-                  = recipe_part.ingredient.name
+                  = recipe_part.ingredient_name
   .uk-width-xlarge
     %dl.uk-description-list
       %dt Selling price

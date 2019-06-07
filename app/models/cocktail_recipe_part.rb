@@ -14,6 +14,12 @@ class CocktailRecipePart < ApplicationRecord
   validates :amount, numericality: { greater_than: 0 }, presence: true
   validate :ingredient_needs_to_match_category
 
+  delegate :name, to: :ingredient, prefix: true
+
+  def category_name
+    ingredient_category.name
+  end
+
   def cost
     ingredient.price_per_cl / 10 * amount
   end
@@ -25,10 +31,7 @@ class CocktailRecipePart < ApplicationRecord
     end
 
     ingredient_category.available_ingredients.map do |possible_ingredient|
-      CocktailRecipePart.new(amount: amount,
-                             strict: strict,
-                             ingredient: possible_ingredient,
-                             ingredient_category: ingredient.category)
+      replace_ingredient_with(possible_ingredient)
     end
   end
 
@@ -38,5 +41,11 @@ class CocktailRecipePart < ApplicationRecord
     return if ingredient&.ingredient_category == ingredient_category
 
     errors.add(:ingredient, "Default Ingredient is not category #{ingredient_category&.name}")
+  end
+
+  def replace_ingredient_with(replacement)
+    self_copy = dup
+    self_copy.ingredient = replacement
+    self_copy
   end
 end

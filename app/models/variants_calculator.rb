@@ -7,20 +7,16 @@ class VariantsCalculator
 
   # @return [Array] Cartesian product of the alternatives
   def part_combinations
-    arrays = []
-    unstrict_recipe_parts.each do |recipe_part|
-      arrays << recipe_part.alternatives
-    end
-    strict_recipe_parts.each do |recipe_part|
-      arrays << recipe_part.alternatives
-    end
-
-    arrays.first.product(*arrays.drop(1))
+    all_alternatives.first.product(*all_alternatives.drop(1))
   end
 
   private
 
   attr_reader :parts
+
+  def all_alternatives
+    unstrict_recipe_parts.map(&:alternatives) + strict_recipe_parts.map(&:alternatives)
+  end
 
   def unstrict_recipe_parts
     parts.reject(&:strict?)
