@@ -48,4 +48,19 @@ class CocktailRecipe < ApplicationRecord
   def likes
     user_cocktail_likes.count
   end
+
+  # @return [Array] Collection of (unpersisted) CocktailRecipe objects
+  def alternatives
+    return CocktailRecipe.none if very_strict?
+
+    VariantsCalculator.new(parts).part_combinations.map do |variant|
+      self.class.new(name: variant.map(&:ingredient_name).join(', '), parts: variant)
+    end
+  end
+
+  private
+
+  def very_strict?
+    parts.all?(&:strict?)
+  end
 end

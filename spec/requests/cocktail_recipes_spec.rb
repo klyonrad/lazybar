@@ -98,8 +98,8 @@ RSpec.describe 'CocktailRecipes', type: :request do
       assert_select('td', text: cocktail_recipe.parts.first.ingredient.name)
       assert_select('td', text: cocktail_recipe.parts.second.ingredient.name)
       assert_select('.uk-description-list',
-                    text: ['Cost', '3.06',
-                           'Selling price', '€3.20',
+                    text: ['Selling price', '€3.20',
+                           'Cost', '3.06',
                            'Description'].join("\n\n"))
     end
 

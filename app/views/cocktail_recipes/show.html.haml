@@ -1,7 +1,7 @@
 %p#notice= notice
 %h1.uk-heading-primary
   = @cocktail_recipe.name
-.uk-grid
+.uk-grid.uk-grid-divider
   - if @cocktail_recipe.cocktail_recipe_parts
     .uk-width-xlarge
       %h2 Ingredients:
@@ -18,20 +18,20 @@
                 ml
               %td
                 - if recipe_part.strict
-                  = recipe_part.ingredient.name
+                  = recipe_part.ingredient_name
                 - else
-                  = recipe_part.ingredient_category.name
+                  = recipe_part.category_name
                   ,
                   %strong default:
-                  = recipe_part.ingredient.name
+                  = recipe_part.ingredient_name
   .uk-width-xlarge
     %dl.uk-description-list
-      %dt Cost
-      %dd
-        = @cocktail_recipe.cost
       %dt Selling price
       %dd
         = number_to_currency @cocktail_recipe.selling_price, unit: '€'
+      %dt Cost
+      %dd
+        = @cocktail_recipe.cost
       %dt Description
       %dd.uk-text-break
         = @cocktail_recipe.description
@@ -44,3 +44,21 @@
   = link_to 'Edit', edit_cocktail_recipe_path(@cocktail_recipe)
   |
   \#{link_to 'Back', cocktail_recipes_path}
+%br
+%br
+.uk-grid
+  .uk-width-xlarge
+    %dt Alternative Prices
+    %div
+      %table.uk-table.uk-table-responsive.uk-table-divider.uk-table-hover
+        %thead
+          %tr
+            %th.uk-table-shrink Price
+            %th Ingredient combination
+        %tbody
+          - @cocktail_recipe.alternatives.each do |recipe_alternative|
+            %tr
+              %td
+                = number_to_currency recipe_alternative.selling_price, unit: '€'
+              %td
+                = recipe_alternative.name
