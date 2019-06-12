@@ -189,4 +189,31 @@ RSpec.describe 'CocktailRecipes', type: :request do
       end
     end
   end
+
+  describe 'POST /destroy' do
+    let!(:cocktail_recipe) { create :cocktail_recipe }
+    let(:recipe_delete_action) { delete(cocktail_recipe_path(cocktail_recipe)) }
+
+    context 'with admin login' do
+      before { sign_in admin }
+
+      it 'works' do
+        expect { recipe_delete_action }.to change { CocktailRecipe.all.count }.from(1).to(0)
+
+        expect(response).to redirect_to(cocktail_recipes_path)
+        follow_redirect!
+        expect(response).to be_successful
+      end
+    end
+
+    context 'without any login(public)' do
+      it 'does not destroy the recipe' do
+        expect { recipe_delete_action }.not_to(change { CocktailRecipe.all.count })
+
+        expect(response).to redirect_to(new_admin_session_path)
+        follow_redirect!
+        expect(response).to be_successful
+      end
+    end
+  end
 end
