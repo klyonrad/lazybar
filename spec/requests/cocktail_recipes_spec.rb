@@ -53,10 +53,6 @@ RSpec.describe 'CocktailRecipes', type: :request do
       end
     end
 
-    context 'with user login' do
-      # TODO: show LIKE button
-    end
-
     context 'with admin login' do
       before { sign_in admin }
 

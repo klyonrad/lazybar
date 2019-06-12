@@ -1,11 +1,12 @@
 addons:
   postgresql: 9.6
 language: ruby
+cache: bundler
 dist: trusty
 rvm:
   - 2.6.3
 install:
-  - bundle install --without development
+  - bundle install
   - nvm install node
   - node -v
   - npm i -g yarn
@@ -16,8 +17,7 @@ env:
 before_script:
   - cp config/database.yml.travis config/database.yml
   - sh -c "if [ '$DB' = 'postgresql' ]; then psql -c 'create database lazybar_ci_test' -U postgres; fi"
-script:
-#  - RAILS_ENV=test bundle exec rails db:schema:load --trace
-#  - bundle exec rails db:test:prepare
   - bundle exec rails db:migrate
+script:
+  - bundle exec rubocop
   - bundle exec rspec --format documentation
