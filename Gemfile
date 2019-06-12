@@ -10,7 +10,7 @@ gem 'bootsnap'
 gem 'devise', '~> 4.6.2'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1.3'
-gem 'rails_admin', '~> 1.4.1'
+gem 'rails_admin', '~> 2.0.0.beta'
 
 ### assets
 gem 'coffee-rails', '~> 4.2'
