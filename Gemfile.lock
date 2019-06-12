@@ -29,6 +29,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.2.3)
       activesupport (= 5.2.3)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (5.2.3)
       activemodel (= 5.2.3)
       activesupport (= 5.2.3)
@@ -93,8 +97,6 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
-    font-awesome-rails (4.7.0.5)
-      railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.0)
@@ -194,19 +196,19 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_admin (1.4.2)
+    rails_admin (2.0.0.beta)
+      activemodel-serializers-xml (>= 1.0)
       builder (~> 3.1)
-      coffee-rails (~> 4.0)
-      font-awesome-rails (>= 3.0, < 5)
+      coffee-rails (>= 4.0, < 6)
       haml (>= 4.0, < 6)
       jquery-rails (>= 3.0, < 5)
       jquery-ui-rails (>= 5.0, < 7)
       kaminari (>= 0.14, < 2.0)
       nested_form (~> 0.3)
       rack-pjax (>= 0.7)
-      rails (>= 4.0, < 6)
+      rails (>= 5.0, < 7)
       remotipart (~> 1.3)
-      sass-rails (>= 4.0, < 6)
+      sass-rails (>= 4.0, < 7)
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
     railties (5.2.3)
@@ -333,7 +335,7 @@ DEPENDENCIES
   rails (~> 5.2.1)
   rails-dom-testing
   rails_12factor
-  rails_admin (~> 1.4.1)
+  rails_admin (~> 2.0.0.beta)
   rake
   rspec-collection_matchers
   rspec-rails
