@@ -173,6 +173,12 @@ RSpec.describe 'CocktailRecipes', type: :request do
                              '1': second_part_params
                            } } }
     end
+    let :invalid_params do
+      { cocktail_recipe: { name: 'foo',
+                           cocktail_recipe_parts_attributes: {
+                             '0': first_part_params
+                           } } }
+    end
     let(:last_cocktail) { CocktailRecipe.last }
 
     context 'with admin login' do
@@ -186,6 +192,40 @@ RSpec.describe 'CocktailRecipes', type: :request do
         expect(last_cocktail.parts).to have(2).items
         expect(response).to redirect_to(cocktail_recipe_path(last_cocktail))
         follow_redirect!
+      end
+
+      it 'does not save the recipe with invalid params and re-renders' do
+        post cocktail_recipes_path, params: invalid_params
+
+        expect(CocktailRecipe.all).to be_empty
+        expect(response.body).to match('Cocktail recipe parts is too short')
+      end
+    end
+  end
+
+  describe 'POST /destroy' do
+    let!(:cocktail_recipe) { create :cocktail_recipe }
+    let(:recipe_delete_action) { delete(cocktail_recipe_path(cocktail_recipe)) }
+
+    context 'with admin login' do
+      before { sign_in admin }
+
+      it 'works' do
+        expect { recipe_delete_action }.to change { CocktailRecipe.all.count }.from(1).to(0)
+
+        expect(response).to redirect_to(cocktail_recipes_path)
+        follow_redirect!
+        expect(response).to be_successful
+      end
+    end
+
+    context 'without any login(public)' do
+      it 'does not destroy the recipe' do
+        expect { recipe_delete_action }.not_to(change { CocktailRecipe.all.count })
+
+        expect(response).to redirect_to(new_admin_session_path)
+        follow_redirect!
+        expect(response).to be_successful
       end
     end
   end
