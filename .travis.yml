@@ -1,6 +1,7 @@
 addons:
   postgresql: '11'
 language: ruby
+cache: bundler
 dist: trusty
 rvm:
   - 2.6.3
