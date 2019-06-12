@@ -173,6 +173,12 @@ RSpec.describe 'CocktailRecipes', type: :request do
                              '1': second_part_params
                            } } }
     end
+    let :invalid_params do
+      { cocktail_recipe: { name: 'foo',
+                           cocktail_recipe_parts_attributes: {
+                             '0': first_part_params
+                           } } }
+    end
     let(:last_cocktail) { CocktailRecipe.last }
 
     context 'with admin login' do
@@ -186,6 +192,13 @@ RSpec.describe 'CocktailRecipes', type: :request do
         expect(last_cocktail.parts).to have(2).items
         expect(response).to redirect_to(cocktail_recipe_path(last_cocktail))
         follow_redirect!
+      end
+
+      it 'does not save the recipe with invalid params and re-renders' do
+        post cocktail_recipes_path, params: invalid_params
+
+        expect(CocktailRecipe.all).to be_empty
+        expect(response.body).to match('Cocktail recipe parts is too short')
       end
     end
   end
