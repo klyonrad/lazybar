@@ -203,6 +203,66 @@ RSpec.describe 'CocktailRecipes', type: :request do
     end
   end
 
+  describe 'POST /update' do
+    context 'with admin login' do
+      before { sign_in admin }
+
+      let(:first_ingredient) { create :ingredient }
+      let(:second_ingredient) { create :ingredient }
+      let(:first_part_params) do
+        {
+          ingredient_category_id: first_ingredient.category.id,
+          ingredient_id: first_ingredient.id,
+          amount: '20'
+        }
+      end
+      let(:second_part_params) do
+        {
+          ingredient_category_id: second_ingredient.category.id,
+          ingredient_id: second_ingredient.id,
+          amount: '15'
+        }
+      end
+
+      context 'with new valid parameters' do
+        let :params do
+          { cocktail_recipe: { name: 'foo',
+                               cocktail_recipe_parts_attributes: {
+                                 '0': first_part_params,
+                                 '1': second_part_params
+                               } } }
+        end
+
+        it 'changes the cocktail recipe' do
+          put cocktail_recipe_path(cocktail_recipe), params: params
+          cocktail_recipe.reload
+
+          expect(cocktail_recipe.name).to eq('foo')
+          expect(response).to redirect_to(cocktail_recipe_path(cocktail_recipe))
+          follow_redirect!
+        end
+      end
+
+      context 'with invalid parameters' do
+        let(:recipe_second_part_destroy_params) { { id: cocktail_recipe.parts.second.id, _destroy: '1' } }
+        let :params do
+          { cocktail_recipe: { name: 'foo',
+                               cocktail_recipe_parts_attributes: {
+                                 '0': recipe_second_part_destroy_params
+                               } } }
+        end
+
+        it 'does not change the cocktail recipe' do
+          put cocktail_recipe_path(cocktail_recipe), params: params
+          cocktail_recipe.reload
+
+          expect(cocktail_recipe.name).not_to eq('foo')
+          expect(response).to be_successful
+        end
+      end
+    end
+  end
+
   describe 'POST /destroy' do
     let!(:cocktail_recipe) { create :cocktail_recipe }
     let(:recipe_delete_action) { delete(cocktail_recipe_path(cocktail_recipe)) }
