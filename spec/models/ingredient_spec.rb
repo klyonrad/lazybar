@@ -11,54 +11,15 @@ RSpec.describe Ingredient do
     it { is_expected.to be_valid }
   end
 
-  describe 'presence validations' do
-    context 'without a name' do
-      subject { build_stubbed :ingredient, name: nil }
-
-      it { is_expected.not_to be_valid }
-    end
-
-    context 'without a category' do
-      subject { build_stubbed :ingredient, ingredient_category: nil }
-
-      it { is_expected.not_to be_valid }
-    end
-
-    context 'without a price' do
-      subject { build_stubbed :ingredient, price_per_cl: nil }
-
-      it { is_expected.not_to be_valid }
-    end
+  describe 'assocations' do
+    it { is_expected.to belong_to(:ingredient_category) }
   end
 
-  describe 'other validations' do
-    describe 'price validations' do
-      context 'with negative price' do
-        subject { build_stubbed :ingredient, price_per_cl: -0.01 }
-
-        it { is_expected.not_to be_valid }
-      end
-
-      context 'with price of zero' do
-        subject { build_stubbed :ingredient, price_per_cl: 0 }
-
-        it { is_expected.to be_valid }
-      end
-    end
-
-    it 'is valid with different names' do
-      ingredient.save
-      ingredients = build_list(:ingredient, 3)
-
-      expect(ingredients).to all(be_valid)
-    end
-
-    it 'is not valid with same name' do
-      ingredient.name = 'Hipster Gin'
-      ingredient.save
-      not_unique = build(:ingredient, name: 'Hipster Gin')
-      expect(not_unique).not_to be_valid
-    end
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:price_per_cl) }
+    it { is_expected.to validate_numericality_of(:price_per_cl).is_greater_than_or_equal_to(0) }
+    it { is_expected.to validate_uniqueness_of(:name) }
   end
 
   describe 'defaults' do

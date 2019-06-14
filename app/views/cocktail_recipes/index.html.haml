@@ -16,7 +16,7 @@
               - cocktail_recipe.cocktail_recipe_parts.each do |recipe_part|
                 %li
                   = sprintf('%.2g', recipe_part.amount / 10)
-                  = recipe_part.strict ? recipe_part.ingredient.name : recipe_part.ingredient_category.name
+                  = recipe_part.strict ? recipe_part.ingredient_name : recipe_part.category_name
       .uk-card-footer
         = link_to 'Show', cocktail_recipe, class: 'uk-button uk-button-default'
         - if admin_signed_in?

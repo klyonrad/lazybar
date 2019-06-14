@@ -152,20 +152,8 @@ RSpec.describe 'CocktailRecipes', type: :request do
   describe 'POST /create' do
     let(:first_ingredient) { create :ingredient }
     let(:second_ingredient) { create :ingredient }
-    let(:first_part_params) do
-      {
-        ingredient_category_id: first_ingredient.category.id,
-        ingredient_id: first_ingredient.id,
-        amount: '20'
-      }
-    end
-    let(:second_part_params) do
-      {
-        ingredient_category_id: second_ingredient.category.id,
-        ingredient_id: second_ingredient.id,
-        amount: '15'
-      }
-    end
+    let(:first_part_params) { { ingredient_id: first_ingredient.id, amount: '20' } }
+    let(:second_part_params) { { ingredient_id: second_ingredient.id, amount: '15' } }
     let :valid_params do
       { cocktail_recipe: { name: 'foo',
                            cocktail_recipe_parts_attributes: {
@@ -209,20 +197,8 @@ RSpec.describe 'CocktailRecipes', type: :request do
 
       let(:first_ingredient) { create :ingredient }
       let(:second_ingredient) { create :ingredient }
-      let(:first_part_params) do
-        {
-          ingredient_category_id: first_ingredient.category.id,
-          ingredient_id: first_ingredient.id,
-          amount: '20'
-        }
-      end
-      let(:second_part_params) do
-        {
-          ingredient_category_id: second_ingredient.category.id,
-          ingredient_id: second_ingredient.id,
-          amount: '15'
-        }
-      end
+      let(:first_part_params) { { ingredient_id: first_ingredient.id, amount: '20' } }
+      let(:second_part_params) { { ingredient_id: second_ingredient.id, amount: '15' } }
 
       context 'with new valid parameters' do
         let :params do

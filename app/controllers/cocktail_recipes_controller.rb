@@ -4,27 +4,19 @@ class CocktailRecipesController < ApplicationController
   before_action :set_cocktail_recipe, only: %i[show edit update destroy like unlike]
   before_action :authenticate_admin!, only: %i[new create edit update destroy]
 
-  # GET /cocktail_recipes
-  # GET /cocktail_recipes.json
   def index
     @cocktail_recipes =
       CocktailRecipe.includes(cocktail_recipe_parts: %i[ingredient ingredient_category]).all
   end
 
-  # GET /cocktail_recipes/1
-  # GET /cocktail_recipes/1.json
   def show; end
 
-  # GET /cocktail_recipes/new
   def new
     @cocktail_recipe = CocktailRecipe.new
   end
 
-  # GET /cocktail_recipes/1/edit
   def edit; end
 
-  # POST /cocktail_recipes
-  # POST /cocktail_recipes.json
   def create
     @cocktail_recipe = CocktailRecipe.new(cocktail_recipe_params)
 
@@ -39,8 +31,6 @@ class CocktailRecipesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /cocktail_recipes/1
-  # PATCH/PUT /cocktail_recipes/1.json
   def update
     respond_to do |format|
       if @cocktail_recipe.update(cocktail_recipe_params)
@@ -53,8 +43,6 @@ class CocktailRecipesController < ApplicationController
     end
   end
 
-  # DELETE /cocktail_recipes/1
-  # DELETE /cocktail_recipes/1.json
   def destroy
     @cocktail_recipe.destroy
     respond_to do |format|
@@ -97,7 +85,7 @@ class CocktailRecipesController < ApplicationController
     params.require(:cocktail_recipe).permit(
       :name,
       :description,
-      cocktail_recipe_parts_attributes: %i[id ingredient_category_id ingredient_id strict amount _destroy]
+      cocktail_recipe_parts_attributes: %i[id ingredient_id strict amount _destroy]
     )
   end
 end
