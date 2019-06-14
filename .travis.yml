@@ -9,11 +9,12 @@ rvm:
 env:
   - DB=postgresql
 #  - DB=sqlite
-before_script:
+before_install:
   - nvm install node
   - node -v
   - npm i -g yarn
   - yarn
+before_script:
   - cp config/database.yml.travis config/database.yml
   - sh -c "if [ '$DB' = 'postgresql' ]; then psql -c 'create database lazybar_ci_test' -U postgres; fi"
   - bundle exec rails db:migrate
