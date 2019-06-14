@@ -23,6 +23,15 @@ RSpec.describe CocktailRecipePart do
     end
   end
 
+  describe '#category_name' do
+    subject { create(:cocktail_recipe_part, ingredient: new_ingredient).category_name }
+
+    let(:new_ingredient) { create :ingredient, category: new_ingredient_category }
+    let(:new_ingredient_category) { create :ingredient_category, name: 'one more thing' }
+
+    it { is_expected.to eq 'one more thing' }
+  end
+
   describe '#alternatives' do
     let(:alternative_ingredients) { recipe_part.alternatives.map(&:ingredient) } # easier "test subject"
 
