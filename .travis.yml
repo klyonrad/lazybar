@@ -4,7 +4,9 @@ language: ruby
 bundler_args: --without production
 cache:
   bundler: true
-  yarn: true
+  directories:
+    - node_modules
+  yarn: true # does not work yet
 dist: trusty
 rvm:
   - 2.6.3
@@ -15,10 +17,12 @@ before_install:
   - nvm install node
   - node -v
   - npm i -g yarn
+  - yarn install
 before_script:
   - cp config/database.yml.travis config/database.yml
   - sh -c "if [ '$DB' = 'postgresql' ]; then psql -c 'create database lazybar_ci_test' -U postgres; fi"
   - bundle exec rails db:migrate
+  - bundle exec rubocop --version
 script:
   - bundle exec rubocop
   - bundle exec rspec --format documentation
