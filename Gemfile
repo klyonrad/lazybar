@@ -32,7 +32,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'listen'
-  gem 'rainbow', github: 'sickill/rainbow', branch: 'master'
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
