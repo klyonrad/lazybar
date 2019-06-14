@@ -46,6 +46,7 @@ group :test do
   gem 'rails-dom-testing'
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 ### analysis

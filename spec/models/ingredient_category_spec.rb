@@ -11,11 +11,7 @@ RSpec.describe IngredientCategory do
     it { is_expected.to be_valid }
   end
 
-  describe 'presence validations' do
-    context 'without a name' do
-      subject { build_stubbed :ingredient_category, name: nil }
-
-      it { is_expected.not_to be_valid }
-    end
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
   end
 end

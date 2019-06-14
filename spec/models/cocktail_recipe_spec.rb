@@ -8,10 +8,7 @@ RSpec.describe CocktailRecipe do
   describe 'validations' do
     it { is_expected.to be_valid }
 
-    it 'is not valid without a name' do
-      cocktail_recipe.name = nil
-      expect(cocktail_recipe).not_to be_valid
-    end
+    it { is_expected.to validate_presence_of(:name) }
 
     it 'is not valid without any ingredients' do
       cocktail_recipe.parts = []
