@@ -9,49 +9,17 @@ RSpec.describe CocktailRecipePart do
     expect(cocktail_recipe_part).to be_valid
   end
 
+  describe 'associations' do
+    it { is_expected.to belong_to(:ingredient) }
+    it { is_expected.to belong_to(:cocktail_recipe) }
+    it { is_expected.to have_one(:ingredient_category).through(:ingredient) }
+  end
+
   describe 'validations' do
-    context 'without recipe association' do
-      before { cocktail_recipe_part.cocktail_recipe = nil }
+    describe 'amount' do
+      subject { build_stubbed :cocktail_recipe_part }
 
-      it { is_expected.not_to be_valid }
-    end
-
-    context 'without a ingredient_category' do
-      before { cocktail_recipe_part.ingredient_category = nil }
-
-      it { is_expected.not_to be_valid }
-    end
-
-    context 'without an ingredient' do
-      before { cocktail_recipe_part.ingredient = nil }
-
-      it { is_expected.not_to be_valid }
-    end
-
-    context 'without an amount' do
-      before { cocktail_recipe_part.amount = nil }
-
-      it { is_expected.not_to be_valid }
-    end
-
-    context 'with negative amount' do
-      before { cocktail_recipe_part.amount = -30 }
-
-      it { is_expected.not_to be_valid }
-    end
-
-    context 'with zero amount' do
-      before { cocktail_recipe_part.amount = 0 }
-
-      it { is_expected.not_to be_valid }
-    end
-
-    context 'when ingredient and category mismatch' do
-      before { cocktail_recipe_part.ingredient_category = different_category }
-
-      let(:different_category) { create :ingredient_category }
-
-      it { is_expected.not_to be_valid }
+      it { is_expected.to validate_numericality_of(:amount).is_greater_than(0) }
     end
   end
 

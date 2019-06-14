@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107124303) do
+ActiveRecord::Schema.define(version: 2019_06_14_134506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,14 +37,12 @@ ActiveRecord::Schema.define(version: 20171107124303) do
 
   create_table "cocktail_recipe_parts", id: :serial, force: :cascade do |t|
     t.integer "cocktail_recipe_id", null: false
-    t.integer "ingredient_category_id", null: false
     t.integer "ingredient_id"
     t.decimal "amount", precision: 15, scale: 9
     t.boolean "strict", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cocktail_recipe_id"], name: "index_cocktail_recipe_parts_on_cocktail_recipe_id"
-    t.index ["ingredient_category_id"], name: "index_cocktail_recipe_parts_on_ingredient_category_id"
     t.index ["ingredient_id"], name: "index_cocktail_recipe_parts_on_ingredient_id"
   end
 
@@ -101,7 +99,6 @@ ActiveRecord::Schema.define(version: 20171107124303) do
   end
 
   add_foreign_key "cocktail_recipe_parts", "cocktail_recipes"
-  add_foreign_key "cocktail_recipe_parts", "ingredient_categories"
   add_foreign_key "cocktail_recipe_parts", "ingredients"
   add_foreign_key "ingredients", "ingredient_categories"
   add_foreign_key "user_cocktail_likes", "cocktail_recipes"

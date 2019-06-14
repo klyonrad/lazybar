@@ -28,17 +28,14 @@ FactoryBot.define do
   factory :cocktail_recipe_part do
     amount { 60 }
     ingredient { nil }
-    ingredient_category { nil }
 
     before(:create) do |recipe_part, _|
       if recipe_part.ingredient
-        recipe_part.ingredient_category = recipe_part.ingredient.category
         recipe_part.cocktail_recipe = create(:cocktail_recipe)
       else
         ingredient = create :ingredient
         recipe_part.cocktail_recipe = create(:cocktail_recipe)
         recipe_part.ingredient = ingredient
-        recipe_part.ingredient_category = ingredient.category
       end
     end
 
@@ -63,7 +60,7 @@ FactoryBot.define do
       size = evaluator.recipe_parts_count
       ingrs = create_list(:ingredient, size)
       cocktail_parts = Array.new(size) do |i|
-        build(:cocktail_recipe_part, ingredient: ingrs[i], ingredient_category: ingrs[i].category,
+        build(:cocktail_recipe_part, ingredient: ingrs[i],
                                      cocktail_recipe: cocktail_recipe)
       end
       cocktail_recipe.cocktail_recipe_parts = cocktail_parts
