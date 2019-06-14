@@ -11,6 +11,7 @@ AllCops:
     - 'db/schema.rb'
     - 'spec/controllers/**/*'
     - 'spec/views/**/*'
+    - '.vendor/bundle/**/*' # Do not execute it for gems in bundle path (relevant for travis)
 #    - !ruby/regexp /old_and_unused\.rb$/
 Rails:
   Enabled: true
