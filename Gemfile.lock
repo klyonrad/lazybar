@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/sickill/rainbow.git
+  revision: 7984c7c7850ae79ecc26ea9e62c3f8170202c28b
+  branch: master
+  specs:
+    rainbow (3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -217,7 +224,6 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
-    rainbow (3.0.0)
     rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
@@ -338,6 +344,7 @@ DEPENDENCIES
   rails-dom-testing
   rails_12factor
   rails_admin (~> 2.0.0.beta)
+  rainbow!
   rake
   rspec-collection_matchers
   rspec-rails
