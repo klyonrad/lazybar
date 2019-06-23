@@ -8,3 +8,10 @@
 #     https: false
 #   )
 # end
+
+# Try current unreleased version of this
+class DummyCompiler < ERB::Compiler # :nodoc:
+  def compile_content(stag, out)
+    out.push "_erbout << ''" if stag == '<%='
+  end
+end

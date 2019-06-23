@@ -13,7 +13,7 @@ defaults: &defaults
   pool: 5
   timeout: 5000
   host: localhost
-  <<: *postgresql
+  <<: *<%= ENV['DB'] || "sqlite" %>
 
 test:
   <<: *defaults
