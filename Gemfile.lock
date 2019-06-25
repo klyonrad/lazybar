@@ -58,7 +58,7 @@ GEM
     bootsnap (1.4.4)
       msgpack (~> 1.0)
     builder (3.2.3)
-    cocoon (1.2.12)
+    cocoon (1.2.13)
     coderay (1.1.2)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
