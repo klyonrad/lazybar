@@ -15,5 +15,7 @@ module LazyBar
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.action_controller.action_on_unpermitted_parameters = :raise
+    # just to remove the deprecation warning
+    config.action_dispatch.return_only_media_type_on_content_type = false
   end
 end
