@@ -7,7 +7,7 @@ gem 'rails', '~> 6.0.0.rc2'
 
 ### backend
 gem 'bootsnap'
-gem 'devise', '~> 4.6.2'
+gem 'devise', '~> 4.7.0'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1.3'
 gem 'rails_admin', '~> 2.0.0.beta'
