@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "select2": "~4.0.11",
-    "uikit": "~3.0.0-rc.14"
+    "uikit": "~3.2.2"
   }
 }
