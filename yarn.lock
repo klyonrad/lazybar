@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-select2@~4.0.11:
-  version "4.0.11"
-  resolved "https://registry.yarnpkg.com/select2/-/select2-4.0.11.tgz#85c6243971947a798d96808ab608f75d5befa2d1"
+select2@~4.0.12:
+  version "4.0.12"
+  resolved "https://registry.yarnpkg.com/select2/-/select2-4.0.12.tgz#9c0492d4d06948f2bd079f6e14718a41c7eaa60e"
 
 uikit@~3.0.0-rc.14:
   version "3.0.3"
