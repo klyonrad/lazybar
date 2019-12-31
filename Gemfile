@@ -9,7 +9,7 @@ gem 'rails', '~> 6.0.0'
 gem 'bootsnap'
 gem 'devise', '~> 4.7.1'
 gem 'jbuilder', '~> 2.7'
-gem 'pg', '~> 1.1.3'
+gem 'pg', '~> 1.2.0'
 gem 'rails_admin', '~> 2.0.0.beta'
 
 ### assets
