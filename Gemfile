@@ -50,7 +50,7 @@ group :test do
 end
 
 ### analysis
-gem 'sentry-raven', '~> 2.5'
+gem 'sentry-raven', '~> 3.0'
 
 ### Deployment
 gem 'rails_12factor', group: :production # For Deployment to heroku
