@@ -26,6 +26,7 @@ gem 'simple_form', '~> 4.1.0'
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -45,7 +46,6 @@ group :test do
   gem 'faker'
   gem 'rails-dom-testing'
   gem 'rspec-collection_matchers'
-  gem 'rspec-rails'
   gem 'shoulda-matchers'
 end
 
