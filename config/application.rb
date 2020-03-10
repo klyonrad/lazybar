@@ -17,5 +17,9 @@ module LazyBar
     config.action_controller.action_on_unpermitted_parameters = :raise
     # just to remove the deprecation warning
     config.action_dispatch.return_only_media_type_on_content_type = false
+
+    config.generators do |g|
+      g.test_framework :rspec, view_specs: false, helper_specs: false, routing_specs: false
+    end
   end
 end
