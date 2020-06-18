@@ -69,6 +69,7 @@ RSpec.describe CocktailRecipePart do
         it 'returns only one item' do
           expect(recipe_part.alternatives).to have_exactly(1).items
         end
+
         it 'returns itself with the same ingredient' do
           expect(alternative_ingredients).to eq([recipe_part.ingredient])
         end
@@ -93,6 +94,7 @@ RSpec.describe CocktailRecipePart do
         it 'does not return the unavailable ingredient' do
           expect(alternative_ingredients).not_to include(unavailable_ingredient)
         end
+
         it 'returns itself and the available ingredient' do
           expect(alternative_ingredients).to match_array([other_ingredient, recipe_part.ingredient])
         end

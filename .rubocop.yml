@@ -4,6 +4,7 @@ require:
   - rubocop-rspec
 
 AllCops:
+  NewCops: enable
   Exclude:
     - 'bin/**/*'
     - 'tmp/**/*'
@@ -29,7 +30,7 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/**/*'
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
   Exclude:
     - 'db/seeds.rb'
@@ -49,3 +50,6 @@ RSpec/MultipleExpectations:
 
 RSpec/NestedGroups:
   Max: 8
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: False # Do not care about performance, race conditions yet
