@@ -43,7 +43,7 @@ end
 
 group :test do
   gem 'coveralls', require: false
-  gem 'factory_bot_rails', '~> 5.0.2'
+  gem 'factory_bot_rails', '~> 5.2'
   gem 'faker'
   gem 'rails-dom-testing'
   gem 'rspec-collection_matchers'
