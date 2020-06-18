@@ -12,22 +12,23 @@
         = notice
       %p.alert
         = alert
-      = link_to 'Kategorien', ingredient_categories_path
-      = link_to 'Zutaten', ingredients_path
-      = link_to 'Cocktails', cocktail_recipes_path
-      - if signed_in?
-        - if user_signed_in?
-          | Logged in as:
-          \#{current_user.email}
-          \#{link_to('Logout', destroy_user_session_path, :method => :delete)}
-        - if admin_signed_in?
-          | Logged in as:
-          \#{current_admin.email}
-          \#{link_to('Logout', destroy_admin_session_path, :method => :delete)}
-      - else
-        |
-        \#{link_to('User Login', new_user_session_path)}
-        \#{link_to('Admin Login', new_admin_session_path)}
+      %ul.uk-tab
+        %li= link_to 'Kategorien', ingredient_categories_path
+        %li= link_to 'Zutaten', ingredients_path
+        %li= link_to 'Cocktails', cocktail_recipes_path
+        - if signed_in?
+          - if user_signed_in?
+            | Logged in as:
+            \#{current_user.email}
+            \#{link_to('Logout', destroy_user_session_path, :method => :delete)}
+          - if admin_signed_in?
+            | Logged in as:
+            \#{current_admin.email}
+            \#{link_to('Logout', destroy_admin_session_path, :method => :delete)}
+        - else
+          %li|
+          %li= link_to('User Login', new_user_session_path)
+          %li= link_to('Admin Login', new_admin_session_path)
       = yield
     %br
     .uk-container.uk-container-large
