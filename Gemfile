@@ -16,6 +16,7 @@ gem 'rails_admin', '~> 2.0.0.beta'
 gem 'coffee-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'sass-rails', '~> 6.0'
+gem 'sprockets', '~> 3.7' # asset compile fails and I don't care why
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
