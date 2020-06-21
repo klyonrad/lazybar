@@ -8,10 +8,7 @@
     %dt Ingredients
     %dd
       %ul.uk-list.uk-list-bullet
-        - @cocktail_recipe.cocktail_recipe_parts.each do |recipe_part|
-          %li
-            = sprintf('%.2g', recipe_part.amount / 10)
-            = recipe_part.strict ? recipe_part.ingredient_name : recipe_part.category_name
+        = render RecipePartComponent.with_collection(@cocktail_recipe.cocktail_recipe_parts)
   .uk-card-footer
     = render ShowButtonComponent.new(record: @cocktail_recipe)
     - if @admin_signed_in
