@@ -6,12 +6,18 @@ class RecipePartComponent < ViewComponent::Base
   end
 
   def simplified_amount
-    sprintf('%.2g', @recipe_part.amount / 10)
+    Kernel.format('%<amount>.2g', amount: centilitre)
   end
 
   def ingredient
     return @recipe_part.ingredient_name if @recipe_part.strict
 
     @recipe_part.category_name
+  end
+
+  private
+
+  def centilitre
+    @recipe_part.amount / 10
   end
 end
