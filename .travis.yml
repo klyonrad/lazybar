@@ -9,7 +9,7 @@ cache:
   yarn: true # does not work yet
 dist: trusty
 rvm:
-  - 2.6.3
+  - 2.6.6
 env:
   - DB=postgresql
 #  - DB=sqlite
