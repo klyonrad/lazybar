@@ -24,6 +24,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'cocoon', '~> 1.2'
 gem 'haml-rails', '~> 2.0'
 gem 'simple_form', '~> 5.0.2'
+gem 'view_component', '~> 2.11'
 
 group :development, :test do
   gem 'pry-rails'

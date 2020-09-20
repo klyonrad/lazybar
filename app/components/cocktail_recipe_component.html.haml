@@ -1,0 +1,16 @@
+.uk-card.uk-card-small.uk-card-body.uk-card-default.uk-card-hover.uk-margin-left.uk-margin-top
+  .uk-card-header
+    %h3.uk-card-title
+      = name
+  %dl.equal-height.uk-description-list.uk-description-list-divider
+    %dt Price
+    %dd= price
+    %dt Ingredients
+    %dd
+      %ul.uk-list.uk-list-bullet
+        = render RecipePartComponent.with_collection(@cocktail_recipe.cocktail_recipe_parts)
+  .uk-card-footer
+    = render ShowButtonComponent.new(record: @cocktail_recipe)
+    - if @admin_signed_in
+      = render edit_button
+      = link_to 'Destroy', @cocktail_recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger'
