@@ -5,7 +5,7 @@ sqlite: &sqlite
 postgresql: &postgresql
   adapter: postgresql
   username: postgres
-  password:
+  password: mysecretpassword
   database: lazybar_ci_test
   min_messages: ERROR
 
