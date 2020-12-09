@@ -46,7 +46,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
         it 'does not show DELETE button for any existing recipe' do
           expect(response).to be_successful
           assert_select(
-            "a[href=\"#{cocktail_recipe_path(cocktail_recipe)}\"]" + '[data-method="delete"]',
+            "a[href=\"#{cocktail_recipe_path(cocktail_recipe)}\"][data-method=\"delete\"]",
             count: 0, text: 'Destroy'
           )
         end
@@ -75,7 +75,7 @@ RSpec.describe 'CocktailRecipes', type: :request do
         it 'shows DELETE button for any existing recipe' do
           expect(response).to be_successful
           assert_select(
-            "a[href=\"#{cocktail_recipe_path(cocktail_recipe)}\"]" + '[data-method="delete"]',
+            "a[href=\"#{cocktail_recipe_path(cocktail_recipe)}\"][data-method=\"delete\"]",
             count: 1, text: 'Destroy'
           )
         end
