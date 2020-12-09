@@ -42,7 +42,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails', '~> 5.2'
+  gem 'factory_bot_rails', '~> 6.1'
   gem 'faker'
   gem 'rails-dom-testing'
   gem 'rspec-collection_matchers'
