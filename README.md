@@ -6,6 +6,7 @@ The cost and price are calculated.
 
 The application is in a experimental state.
 
+![Verify](https://github.com/klyonrad/lazybar/workflows/Verify/badge.svg)
 [![Depfu](https://badges.depfu.com/badges/205871c3a207f4dd3180949e18d5de86/overview.svg)](https://depfu.com/github/klyonrad/lazybar)
 
 # Deployment
