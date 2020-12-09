@@ -51,5 +51,8 @@ RSpec/MultipleExpectations:
 RSpec/NestedGroups:
   Max: 8
 
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
 Rails/UniqueValidationWithoutIndex:
   Enabled: False # Do not care about performance, race conditions yet
