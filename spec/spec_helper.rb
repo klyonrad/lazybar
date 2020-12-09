@@ -2,7 +2,9 @@
 
 require 'simplecov'
 
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  enable_coverage :branch
+end
 
 require 'rspec/collection_matchers'
 require 'faker'
