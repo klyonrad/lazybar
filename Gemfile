@@ -46,8 +46,8 @@ group :test do
   gem 'faker'
   gem 'rails-dom-testing'
   gem 'rspec-collection_matchers'
-  gem 'simplecov'
   gem 'shoulda-matchers'
+  gem 'simplecov'
 end
 
 ### analysis
