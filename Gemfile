@@ -23,7 +23,7 @@ gem 'uglifier', '>= 1.3.0'
 ### Frontend stuff
 gem 'cocoon', '~> 1.2'
 gem 'haml-rails', '~> 2.0'
-gem 'simple_form', '~> 5.0.2'
+gem 'simple_form', '~> 5.1.0'
 
 group :development, :test do
   gem 'pry-rails'
