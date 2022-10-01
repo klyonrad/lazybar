@@ -92,7 +92,6 @@ GEM
     diff-lcs (1.5.0)
     docile (1.4.0)
     erubi (1.11.0)
-    erubis (2.7.0)
     execjs (2.8.1)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -111,17 +110,11 @@ GEM
     haml (5.2.2)
       temple (>= 0.8.0)
       tilt
-    haml-rails (2.0.1)
+    haml-rails (2.1.0)
       actionpack (>= 5.1)
       activesupport (>= 5.1)
-      haml (>= 4.0.6, < 6.0)
-      html2haml (>= 1.0.1)
+      haml (>= 4.0.6)
       railties (>= 5.1)
-    html2haml (2.2.0)
-      erubis (~> 2.7.0)
-      haml (>= 4.0, < 6)
-      nokogiri (>= 1.6.0)
-      ruby_parser (~> 3.5)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -276,8 +269,6 @@ GEM
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
-    ruby_parser (3.19.1)
-      sexp_processor (~> 4.16)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -290,7 +281,6 @@ GEM
       tilt
     sentry-raven (3.1.2)
       faraday (>= 1.0)
-    sexp_processor (4.16.1)
     shoulda-matchers (5.0.0)
       activesupport (>= 5.2.0)
     simple_form (5.1.0)
@@ -327,7 +317,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   ruby
