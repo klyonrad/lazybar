@@ -19,6 +19,9 @@ Rails:
 Rails/BulkChangeTable:
   Enabled: false
 
+Rails/I18nLocaleTexts:
+  Enabled: false # For later
+
 Style/Documentation:
   Enabled: false
 
