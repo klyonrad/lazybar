@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 ruby '3.0.5'
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.1.7'
 
 ### backend
 gem 'bootsnap'
